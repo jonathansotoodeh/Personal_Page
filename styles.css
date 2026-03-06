@@ -1,0 +1,178 @@
+:root {
+  --bg: #f5efe3;
+  --surface: rgba(255, 251, 245, 0.84);
+  --surface-strong: rgba(247, 205, 88, 0.24);
+  --ink: #1f2630;
+  --muted: #5e645f;
+  --line: rgba(31, 38, 48, 0.14);
+  --shadow: 0 24px 70px rgba(37, 41, 46, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI Variable Text", "Aptos", "Franklin Gothic Book", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(232, 119, 34, 0.18), transparent 34%),
+    radial-gradient(circle at top right, rgba(18, 116, 117, 0.2), transparent 30%),
+    linear-gradient(145deg, #fbf7ef 0%, #f0e4cb 100%);
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 999px;
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+body::before {
+  inset: 8vh auto auto 8vw;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(197, 107, 33, 0.14);
+}
+
+body::after {
+  inset: auto 10vw 12vh auto;
+  width: 20rem;
+  height: 20rem;
+  background: rgba(13, 98, 108, 0.12);
+}
+
+.page-shell {
+  width: min(1040px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 4rem 0 5rem;
+}
+
+.hero,
+.card {
+  backdrop-filter: blur(20px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2rem, 6vw, 5rem);
+  border-radius: 2rem;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -6rem -6rem auto;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 2rem;
+  rotate: 16deg;
+  background: linear-gradient(180deg, rgba(247, 205, 88, 0.6), rgba(210, 118, 43, 0.22));
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+h1,
+h2 {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  margin: 0;
+  max-width: 10ch;
+  font-size: clamp(3rem, 9vw, 6.25rem);
+  line-height: 0.95;
+}
+
+.lede {
+  max-width: 42rem;
+  margin: 1.5rem 0 0;
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 0.95rem 1.4rem;
+  border-radius: 999px;
+  background: #1f2630;
+  color: #fff9f2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+}
+
+.card.accent {
+  background: linear-gradient(180deg, var(--surface), var(--surface-strong));
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.6rem;
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+code {
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.45rem;
+  background: rgba(31, 38, 48, 0.08);
+  font-family: Consolas, "Courier New", monospace;
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    padding-top: 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    border-radius: 1.5rem;
+  }
+
+  .hero::after {
+    width: 11rem;
+    height: 11rem;
+  }
+}
