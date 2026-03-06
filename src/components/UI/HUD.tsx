@@ -60,8 +60,9 @@ export default function HUD({
         <div className="flex items-start justify-between gap-4">
           <div className="pointer-events-auto panel-shell max-w-md p-4 md:p-5">
             <p className="hud-label text-neonCyan">jonathan</p>
-            <h1 className="mt-3 max-w-[22rem] font-display uppercase leading-[0.92] tracking-[0.22em] text-white text-[clamp(2rem,5vw,3.15rem)]">
-              <span className="block">Jonathan&apos;s Neon Cyber</span>
+            <h1 className="mt-3 max-w-[19rem] font-display uppercase leading-[0.9] tracking-[0.16em] text-white text-[clamp(1.45rem,3.8vw,2.5rem)] md:max-w-[21rem] md:text-[clamp(1.85rem,3.4vw,2.85rem)]">
+              <span className="block">Jonathan&apos;s</span>
+              <span className="block">Neon Cyber</span>
               <span className="block">Headquarters</span>
             </h1>
             <p className="mt-3 max-w-md text-sm text-white/75 md:text-base">
