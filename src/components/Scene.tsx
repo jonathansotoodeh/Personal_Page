@@ -239,11 +239,14 @@ function SceneContent({
 
 export default function Scene(props: SceneProps) {
   const readyFlag = useRef(false);
+  const defaultCameraPosition: [number, number, number] = props.isMobile
+    ? [0, 2.9, 11.1]
+    : [0, 3.1, 12.1];
 
   return (
     <div className="absolute inset-0">
       <Canvas
-        camera={{ position: [0, 2.95, 9.7], fov: props.isMobile ? 60 : 50 }}
+        camera={{ position: defaultCameraPosition, fov: props.isMobile ? 60 : 50 }}
         dpr={[1.2, props.isMobile ? 1.6 : 2.2]}
         gl={{
           antialias: !props.isMobile,
