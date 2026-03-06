@@ -58,16 +58,16 @@ export default function HUD({
     <>
       <div ref={headerRef} className="pointer-events-none fixed inset-x-0 top-0 z-20 p-4 md:p-6">
         <div className="flex items-start justify-between gap-4">
-          <div className="pointer-events-auto panel-shell max-w-md p-4 md:p-5">
+          <div className="pointer-events-auto panel-shell w-full max-w-[34rem] p-4 md:p-5">
             <p className="hud-label text-neonCyan">jonathan</p>
-            <h1 className="mt-3 max-w-[16.5rem] font-display uppercase text-white md:max-w-[18rem]">
-              <span className="block text-[clamp(1.02rem,2.15vw,1.4rem)] leading-[0.92] tracking-[0.05em]">
+            <h1 className="mt-3 max-w-[22rem] font-display uppercase text-white md:max-w-[24rem]">
+              <span className="block text-[clamp(1.08rem,2.2vw,1.52rem)] leading-[0.92] tracking-[0.04em]">
                 Jonathan&apos;s
               </span>
-              <span className="block text-[clamp(1.02rem,2.15vw,1.4rem)] leading-[0.92] tracking-[0.05em]">
+              <span className="block text-[clamp(1.08rem,2.2vw,1.52rem)] leading-[0.92] tracking-[0.04em]">
                 Neon Cyber
               </span>
-              <span className="block text-[clamp(1.02rem,2.15vw,1.4rem)] leading-[0.92] tracking-[0.05em]">
+              <span className="block text-[clamp(1.08rem,2.2vw,1.52rem)] leading-[0.92] tracking-[0.04em]">
                 Headquarters
               </span>
             </h1>
