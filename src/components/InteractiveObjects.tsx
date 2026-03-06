@@ -71,7 +71,8 @@ function Hotspot({
         <meshBasicMaterial
           color={hovered ? glowColor ?? color : color}
           transparent
-          opacity={hovered ? 0.18 : 0.08}
+          opacity={hovered ? 0.12 : 0.04}
+          depthTest={false}
           depthWrite={false}
           side={THREE.DoubleSide}
         />
@@ -82,6 +83,7 @@ function Hotspot({
           color={color}
           transparent
           opacity={0.001}
+          depthTest={false}
           depthWrite={false}
           side={THREE.DoubleSide}
         />
@@ -91,12 +93,13 @@ function Hotspot({
         <meshBasicMaterial
           transparent
           opacity={0.001}
+          depthTest={false}
           depthWrite={false}
           side={THREE.DoubleSide}
         />
       </mesh>
       {hovered && (
-        <Html center distanceFactor={7}>
+        <Html position={[0, 1.12, 0]} distanceFactor={7}>
           <div className="pointer-events-none rounded-full border border-white/20 bg-black/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.35em] text-white shadow-neon">
             {hint}
           </div>

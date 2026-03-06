@@ -1,5 +1,4 @@
 import { Line, MeshReflectorMaterial } from '@react-three/drei';
-import { useMemo } from 'react';
 
 interface RoomProps {
   isMobile: boolean;
@@ -7,9 +6,6 @@ interface RoomProps {
 }
 
 export default function Room({ isMobile, sunsetMode }: RoomProps) {
-  const horizontalLines = useMemo(() => [1.2, 2.3, 3.4, 4.5, 5.6], []);
-  const verticalLines = useMemo(() => [-5.1, -2.7, -0.3, 2.1, 4.5], []);
-
   return (
     <group position={[0, -1.4, 0]}>
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
@@ -27,42 +23,6 @@ export default function Room({ isMobile, sunsetMode }: RoomProps) {
           minDepthThreshold={0.8}
           maxDepthThreshold={1.2}
         />
-      </mesh>
-
-      <mesh position={[0, 3.2, -5.8]} receiveShadow>
-        <boxGeometry args={[16, 8, 0.2]} />
-        <meshStandardMaterial
-          color={sunsetMode ? '#22111f' : '#0d1122'}
-          emissive={sunsetMode ? '#34151a' : '#101f44'}
-          emissiveIntensity={0.55}
-          metalness={0.2}
-          roughness={0.88}
-        />
-      </mesh>
-
-      <mesh position={[-7.8, 3.2, 0]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
-        <boxGeometry args={[11.6, 8, 0.2]} />
-        <meshStandardMaterial
-          color="#111321"
-          emissive={sunsetMode ? '#33181e' : '#15173d'}
-          emissiveIntensity={0.6}
-          roughness={0.86}
-        />
-      </mesh>
-
-      <mesh position={[7.8, 3.2, 0]} rotation={[0, -Math.PI / 2, 0]} receiveShadow>
-        <boxGeometry args={[11.6, 8, 0.2]} />
-        <meshStandardMaterial
-          color="#111321"
-          emissive={sunsetMode ? '#341f16' : '#15173d'}
-          emissiveIntensity={0.58}
-          roughness={0.86}
-        />
-      </mesh>
-
-      <mesh position={[0, 6.8, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <boxGeometry args={[16, 12, 0.22]} />
-        <meshStandardMaterial color="#11111b" roughness={0.88} metalness={0.16} />
       </mesh>
 
       <mesh position={[0, 3.4, -5.65]}>
@@ -136,36 +96,6 @@ export default function Room({ isMobile, sunsetMode }: RoomProps) {
           />
         </mesh>
       </group>
-
-      {horizontalLines.map((offset) => (
-        <Line
-          key={`h-${offset}`}
-          points={[
-            [-7.6, offset, -5.68],
-            [-5.3, offset, -5.68],
-            [5.3, offset, -5.68],
-            [7.6, offset, -5.68],
-          ]}
-          color={sunsetMode ? '#ffb347' : '#00ffff'}
-          lineWidth={0.75}
-          transparent
-          opacity={0.32}
-        />
-      ))}
-
-      {verticalLines.map((offset) => (
-        <Line
-          key={`v-${offset}`}
-          points={[
-            [offset, 0.15, -5.68],
-            [offset, 6.22, -5.68],
-          ]}
-          color={offset % 2 === 0 ? '#ff00aa' : '#8b5cf6'}
-          lineWidth={0.85}
-          transparent
-          opacity={0.35}
-        />
-      ))}
 
       <group position={[-4.8, 0.75, 1.8]}>
         <mesh castShadow position={[0, 0.35, 0]}>
