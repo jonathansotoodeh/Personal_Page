@@ -127,7 +127,7 @@ export default function CitySkyline({ sunsetMode }: CitySkylineProps) {
   return (
     <group position={[0, 0.25, 0]}>
       <mesh position={[0, 5.2, -24]}>
-        <planeGeometry args={[46, 20]} />
+        <boxGeometry args={[46, 20, 0.25]} />
         <meshBasicMaterial
           color={sunsetMode ? '#281131' : '#12081d'}
           transparent
@@ -136,7 +136,7 @@ export default function CitySkyline({ sunsetMode }: CitySkylineProps) {
       </mesh>
 
       <mesh position={[0, 5.2, -23.5]}>
-        <circleGeometry args={[4.8, 64]} />
+        <sphereGeometry args={[4.8, 48, 48, 0, Math.PI * 2, 0, Math.PI / 2]} />
         <meshBasicMaterial
           color={sunsetMode ? '#ff9a62' : '#ff4fd8'}
           transparent
@@ -145,7 +145,7 @@ export default function CitySkyline({ sunsetMode }: CitySkylineProps) {
       </mesh>
 
       <mesh position={[0, -1.55, -18.8]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[52, 24]} />
+        <boxGeometry args={[52, 24, 0.08]} />
         <meshStandardMaterial
           color={sunsetMode ? '#1b0f18' : '#050712'}
           emissive={sunsetMode ? '#120916' : '#09111b'}

@@ -1,41 +1,11 @@
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
+import { projects } from '../../content/siteContent';
 
 interface ProjectsOverlayProps {
   open: boolean;
   onClose: () => void;
 }
-
-const projects = [
-  {
-    title: 'Neon Atlas',
-    description:
-      'An interactive travel microsite with layered WebGL transitions and location-based sound design.',
-    stack: 'React, Three.js, GSAP, Mapbox',
-    href: 'https://github.com/jonathansotoodeh',
-  },
-  {
-    title: 'Pulse Grid CMS',
-    description:
-      'A motion-first dashboard with realtime content previews and tactile data visualizations.',
-    stack: 'Next.js, Tailwind, Framer Motion, Supabase',
-    href: 'https://github.com/jonathansotoodeh',
-  },
-  {
-    title: 'Low Tide Lab',
-    description:
-      'Creative coding playground for shader experiments, ocean simulations, and interactive typography.',
-    stack: 'React Three Fiber, GLSL, Vite',
-    href: 'https://github.com/jonathansotoodeh',
-  },
-  {
-    title: 'Afterglow Commerce',
-    description:
-      'A premium storefront concept with cinematic product reveals and editor-friendly modular sections.',
-    stack: 'Shopify Hydrogen, React, GSAP',
-    href: 'https://github.com/jonathansotoodeh',
-  },
-];
 
 export default function ProjectsOverlay({ open, onClose }: ProjectsOverlayProps) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -82,7 +52,7 @@ export default function ProjectsOverlay({ open, onClose }: ProjectsOverlayProps)
             >
               <div className="flex items-center justify-between gap-4">
                 <h3 className="font-display text-xl text-white">{project.title}</h3>
-                <span className="hud-label text-neonCyan">Open Link</span>
+                <span className="hud-label text-neonCyan">{project.linkLabel}</span>
               </div>
               <p className="mt-3 text-base leading-relaxed text-white/75">
                 {project.description}

@@ -1,33 +1,11 @@
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
+import { contactItems } from '../../content/siteContent';
 
 interface ContactOverlayProps {
   open: boolean;
   onClose: () => void;
 }
-
-const contactLinks = [
-  {
-    label: 'X / @jtsotoodeh',
-    href: 'https://x.com/jtsotoodeh',
-    tone: 'text-neonCyan',
-  },
-  {
-    label: 'GitHub / jonathansotoodeh',
-    href: 'https://github.com/jonathansotoodeh',
-    tone: 'text-neonPink',
-  },
-  {
-    label: 'LinkedIn / jonathansotoodeh',
-    href: 'https://www.linkedin.com/in/jonathansotoodeh/',
-    tone: 'text-neonYellow',
-  },
-  {
-    label: 'Email / jay@neonhaven.dev',
-    href: 'mailto:jay@neonhaven.dev',
-    tone: 'text-white',
-  },
-];
 
 export default function ContactOverlay({ open, onClose }: ContactOverlayProps) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -64,17 +42,26 @@ export default function ContactOverlay({ open, onClose }: ContactOverlayProps) {
         </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {contactLinks.map((link) => (
+          {contactItems.map((link) =>
+            link.href ? (
             <a
               key={link.label}
               className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:border-neonPink/50 hover:bg-white/10"
               href={link.href}
               rel="noreferrer"
-              target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+              target="_blank"
             >
               <span className={`font-display text-xl ${link.tone}`}>{link.label}</span>
             </a>
-          ))}
+            ) : (
+            <div
+              key={link.label}
+              className="rounded-3xl border border-white/10 bg-white/5 p-5"
+            >
+              <span className={`font-display text-xl ${link.tone}`}>{link.label}</span>
+            </div>
+            ),
+          )}
         </div>
       </div>
     </aside>

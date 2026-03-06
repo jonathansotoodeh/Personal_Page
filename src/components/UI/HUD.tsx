@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
+import { profile } from '../../content/siteContent';
 
 interface SocialLink {
   label: string;
@@ -63,8 +64,9 @@ export default function HUD({
               Jay's Neon Cyber Haven
             </h1>
             <p className="mt-3 max-w-md text-sm text-white/75 md:text-base">
-              A Miami cyber loft with clickable workstations, warm ocean mode,
-              and a skyline tuned for synthwave nights.
+              {profile.name} builds immersive web interfaces from {profile.city},
+              blending React, motion, and real-time 3D into cinematic portfolio
+              experiences.
             </p>
 
             <div className="mt-4 flex flex-wrap gap-2">

@@ -5,7 +5,6 @@ import {
   Suspense,
   lazy,
   useEffect,
-  useMemo,
   useState,
 } from 'react';
 import BioOverlay from './components/Overlays/BioOverlay';
@@ -14,15 +13,11 @@ import MiamiToggle from './components/Overlays/MiamiToggle';
 import ProjectsOverlay from './components/Overlays/ProjectsOverlay';
 import HUD from './components/UI/HUD';
 import LoadingScreen from './components/UI/LoadingScreen';
+import { socialLinks } from './content/siteContent';
 
 const Scene = lazy(() => import('./components/Scene'));
 
 type OverlayKey = 'bio' | 'projects' | 'contact' | null;
-
-interface SocialLink {
-  label: string;
-  href: string;
-}
 
 interface SceneBoundaryProps {
   children: ReactNode;
@@ -100,16 +95,6 @@ function App() {
     const timeoutId = window.setTimeout(() => setShowMiamiToast(false), 2200);
     return () => window.clearTimeout(timeoutId);
   }, [showMiamiToast]);
-
-  const socialLinks = useMemo<SocialLink[]>(
-    () => [
-      { label: 'X', href: 'https://x.com/jtsotoodeh' },
-      { label: 'GH', href: 'https://github.com/jonathansotoodeh' },
-      { label: 'IN', href: 'https://www.linkedin.com/in/jonathansotoodeh/' },
-      { label: 'MAIL', href: 'mailto:jay@neonhaven.dev' },
-    ],
-    [],
-  );
 
   const openOverlay = (overlay: Exclude<OverlayKey, null>) => {
     setActiveOverlay(overlay);

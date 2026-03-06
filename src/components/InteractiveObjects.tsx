@@ -1,4 +1,4 @@
-import { Html, useCursor } from '@react-three/drei';
+import { Html, Text, useCursor } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { type ReactNode, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
@@ -139,18 +139,40 @@ export default function InteractiveObjects({
             <meshStandardMaterial color="#1a2130" metalness={0.78} roughness={0.2} />
           </mesh>
           <mesh position={[0, 0.44, -0.32]} rotation={[-1.12, 0.32, 0]}>
-            <boxGeometry args={[1.24, 0.05, 0.78]} />
+            <boxGeometry args={[1.24, 0.78, 0.05]} />
             <meshStandardMaterial
               color="#0f1724"
-              emissive="#00ffff"
-              emissiveIntensity={1.4}
+              emissive="#092f3a"
+              emissiveIntensity={0.9}
               metalness={0.25}
               roughness={0.15}
             />
           </mesh>
-          <mesh position={[0, 0.44, -0.28]} rotation={[-1.12, 0.32, 0]}>
-            <planeGeometry args={[1.02, 0.58]} />
-            <meshBasicMaterial color={sunsetMode ? '#ffb347' : '#80ffff'} />
+          <mesh position={[0, 0.44, -0.29]} rotation={[-1.12, 0.32, 0]}>
+            <boxGeometry args={[1, 0.56, 0.02]} />
+            <meshStandardMaterial
+              color={sunsetMode ? '#ffb347' : '#80ffff'}
+              emissive={sunsetMode ? '#ffb347' : '#00ffff'}
+              emissiveIntensity={1.1}
+            />
+          </mesh>
+          <mesh position={[0, 0.17, 0.27]} rotation={[-0.18, 0.32, 0]}>
+            <boxGeometry args={[0.88, 0.03, 0.28]} />
+            <meshStandardMaterial color="#111a28" metalness={0.72} roughness={0.24} />
+          </mesh>
+          {[-0.28, 0, 0.28].map((x) => (
+            <mesh key={x} position={[x, 0.17, 0.27]} rotation={[-0.18, 0.32, 0]}>
+              <boxGeometry args={[0.18, 0.031, 0.18]} />
+              <meshStandardMaterial
+                color="#152133"
+                emissive={sunsetMode ? '#ffb347' : '#00ffff'}
+                emissiveIntensity={0.25}
+              />
+            </mesh>
+          ))}
+          <mesh position={[0.56, -0.12, -0.1]} rotation={[-0.18, 0.32, 0]}>
+            <cylinderGeometry args={[0.03, 0.03, 0.28, 10]} />
+            <meshStandardMaterial color="#51596b" metalness={0.8} roughness={0.2} />
           </mesh>
         </group>
       </Hotspot>
@@ -163,21 +185,36 @@ export default function InteractiveObjects({
         position={[2.55, 2.2, -0.3]}
       >
         <group>
-          <mesh>
-            <boxGeometry args={[2.1, 0.28, 0.18]} />
+          <mesh position={[0, 0, -0.04]}>
+            <boxGeometry args={[2.18, 0.5, 0.12]} />
             <meshStandardMaterial
-              color="#1b0f1b"
+              color="#120d15"
               emissive="#ff00aa"
-              emissiveIntensity={1.8}
-              metalness={0.55}
-              roughness={0.24}
+              emissiveIntensity={0.9}
+              metalness={0.68}
+              roughness={0.2}
             />
           </mesh>
-          <Html center distanceFactor={7.6} transform>
-            <div className="font-display text-lg uppercase tracking-[0.45em] text-neonPink drop-shadow-[0_0_10px_rgba(255,0,170,0.9)]">
-              About
-            </div>
-          </Html>
+          <mesh position={[-0.96, 0, 0.02]}>
+            <boxGeometry args={[0.08, 0.58, 0.08]} />
+            <meshStandardMaterial color="#0f1018" emissive="#00ffff" emissiveIntensity={0.9} />
+          </mesh>
+          <mesh position={[0.96, 0, 0.02]}>
+            <boxGeometry args={[0.08, 0.58, 0.08]} />
+            <meshStandardMaterial color="#0f1018" emissive="#ff00aa" emissiveIntensity={0.9} />
+          </mesh>
+          <Text
+            position={[0, 0.02, 0.05]}
+            fontSize={0.28}
+            letterSpacing={0.08}
+            color="#ff7bd3"
+            anchorX="center"
+            anchorY="middle"
+            outlineColor="#270818"
+            outlineWidth={0.02}
+          >
+            ABOUT
+          </Text>
         </group>
       </Hotspot>
 
@@ -255,12 +292,12 @@ export default function InteractiveObjects({
           <meshStandardMaterial color="#89fff5" emissive="#00ffff" emissiveIntensity={1.2} />
         </mesh>
         <mesh position={[0.18, -0.05, 0]} rotation={[0, 0, Math.PI / 6]}>
-          <planeGeometry args={[0.28, 0.09]} />
-          <meshBasicMaterial color="#89fff5" transparent opacity={0.65} />
+          <boxGeometry args={[0.28, 0.09, 0.02]} />
+          <meshStandardMaterial color="#89fff5" emissive="#00ffff" emissiveIntensity={0.8} />
         </mesh>
         <mesh position={[-0.18, 0.08, 0]} rotation={[0, 0, -Math.PI / 6]}>
-          <planeGeometry args={[0.28, 0.09]} />
-          <meshBasicMaterial color="#89fff5" transparent opacity={0.65} />
+          <boxGeometry args={[0.28, 0.09, 0.02]} />
+          <meshStandardMaterial color="#89fff5" emissive="#00ffff" emissiveIntensity={0.8} />
         </mesh>
       </group>
 

@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
+import { profile } from '../../content/siteContent';
 
 interface BioOverlayProps {
   open: boolean;
@@ -31,7 +32,7 @@ export default function BioOverlay({ open, onClose }: BioOverlayProps) {
         <div className="flex items-start justify-between gap-6">
           <div>
             <p className="hud-label text-neonCyan">Identity</p>
-            <h2 className="mt-3 font-display text-3xl md:text-4xl">jay</h2>
+            <h2 className="mt-3 font-display text-3xl md:text-4xl">{profile.name}</h2>
           </div>
           <button className="hud-chip" onClick={onClose}>
             Close
@@ -39,23 +40,34 @@ export default function BioOverlay({ open, onClose }: BioOverlayProps) {
         </div>
 
         <p className="mt-6 text-lg leading-relaxed text-white/80">
-          jay, Miami-based developer passionate about web, 3D, and creative
-          coding. Building immersive experiences.
+          {profile.bio}
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
             <p className="hud-label text-neonPink">Focus</p>
             <p className="mt-3 text-base text-white/75">
-              High-touch interfaces, cinematic product storytelling, creative
-              frontends, and performant interaction design.
+              {profile.focus}
             </p>
           </div>
           <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-            <p className="hud-label text-neonYellow">Base</p>
+            <p className="hud-label text-neonYellow">Current Status</p>
             <p className="mt-3 text-base text-white/75">
-              Miami nights, ocean glow, neon grids, synth textures, and motion
-              systems that feel tactile instead of ornamental.
+              {profile.summary}
+            </p>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
+            <p className="hud-label text-neonCyan">Location</p>
+            <p className="mt-3 text-base text-white/75">
+              {profile.city}, with a public portfolio and GitHub profile under
+              active development.
+            </p>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
+            <p className="hud-label text-neonPink">Public Footprint</p>
+            <p className="mt-3 text-base text-white/75">
+              {profile.githubRepos} public GitHub repo live right now, centered
+              on this portfolio build and ready to expand.
             </p>
           </div>
         </div>
