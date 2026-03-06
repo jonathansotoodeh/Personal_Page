@@ -1,4 +1,4 @@
-import { Center, Text, Text3D, useCursor, useGLTF } from '@react-three/drei';
+import { Center, Text3D, useCursor, useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { type ReactNode, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
@@ -277,15 +277,15 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
     <group rotation={[-0.08, 0.28, 0]}>
       <mesh position={[0, -0.18, 0.12]}>
         <boxGeometry args={[1.9, 0.14, 1.24]} />
-        <meshStandardMaterial color="#243246" emissive="#1e4259" emissiveIntensity={0.16} metalness={0.68} roughness={0.2} />
+        <meshStandardMaterial color="#2c3e56" emissive="#1e4259" emissiveIntensity={0.12} metalness={0.82} roughness={0.14} />
       </mesh>
       <mesh position={[0, 0.18, -0.18]}>
         <boxGeometry args={[0.22, 0.48, 0.22]} />
-        <meshStandardMaterial color="#2a3950" metalness={0.7} roughness={0.18} />
+        <meshStandardMaterial color="#30435d" metalness={0.8} roughness={0.14} />
       </mesh>
       <mesh position={[0, 0.86, -0.28]}>
         <boxGeometry args={[1.32, 1.02, 0.16]} />
-        <meshStandardMaterial color="#2c3c54" emissive="#17314a" emissiveIntensity={0.18} metalness={0.6} roughness={0.18} />
+        <meshStandardMaterial color="#344862" emissive="#17314a" emissiveIntensity={0.12} metalness={0.74} roughness={0.16} />
       </mesh>
       <mesh position={[0, 0.86, -0.18]}>
         <boxGeometry args={[1.06, 0.76, 0.03]} />
@@ -301,21 +301,20 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
         <boxGeometry args={[0.84, 0.22, 0.012]} />
         <meshBasicMaterial color="#f4feff" transparent opacity={0.26} toneMapped={false} />
       </mesh>
-      <Text
-        position={[0, 0.97, -0.148]}
-        fontSize={0.225}
-        maxWidth={0.72}
-        textAlign="center"
-        anchorX="center"
-        anchorY="middle"
-        color="#000000"
-        outlineColor="#000000"
-        outlineWidth={0.017}
-        material-toneMapped={false}
-        fontWeight={900}
-      >
-        PROJECTS
-      </Text>
+      <Center position={[0, 0.97, -0.143]}>
+        <Text3D
+          font={textFont}
+          size={0.108}
+          height={0.012}
+          bevelEnabled
+          bevelSize={0.003}
+          bevelThickness={0.003}
+          curveSegments={10}
+        >
+          PROJECTS
+          <meshBasicMaterial color="#000000" toneMapped={false} />
+        </Text3D>
+      </Center>
       {[-0.26, 0, 0.26].map((x) => (
         <mesh key={`screen-line-${x}`} position={[x, 0.71, -0.153]}>
           <boxGeometry args={[0.14, 0.028, 0.012]} />
@@ -340,7 +339,7 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
       </mesh>
       <mesh position={[0, 0.06, 0.18]}>
         <boxGeometry args={[1.18, 0.04, 0.52]} />
-        <meshStandardMaterial color="#263448" metalness={0.68} roughness={0.2} />
+        <meshStandardMaterial color="#30445d" metalness={0.8} roughness={0.15} />
       </mesh>
       {[-0.34, -0.17, 0, 0.17, 0.34].map((x) => (
         <mesh key={x} position={[x, 0.09, 0.1]}>
@@ -350,7 +349,7 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
       ))}
       <mesh position={[0, 0.07, 0.38]}>
         <boxGeometry args={[0.34, 0.012, 0.18]} />
-        <meshStandardMaterial color="#3b4d66" emissive="#8ef9ff" emissiveIntensity={0.06} />
+        <meshStandardMaterial color="#465c78" emissive="#8ef9ff" emissiveIntensity={0.04} metalness={0.72} roughness={0.14} />
       </mesh>
     </group>
   );
@@ -363,15 +362,15 @@ function AboutRobot() {
       <pointLight position={[-0.9, 2.7, 0.5]} intensity={7} distance={3.8} color="#ffd3f1" />
       <mesh position={[0, 0.1, 0]}>
         <cylinderGeometry args={[0.62, 0.74, 0.16, 8]} />
-        <meshStandardMaterial color="#506989" emissive="#6b2e83" emissiveIntensity={0.38} metalness={0.56} roughness={0.14} />
+        <meshStandardMaterial color="#506989" emissive="#6b2e83" emissiveIntensity={0.26} metalness={0.16} roughness={0.72} />
       </mesh>
       <mesh position={[0, 0.96, 0]}>
         <boxGeometry args={[1.08, 1.24, 0.56]} />
-        <meshStandardMaterial color="#6b88ae" emissive="#6c2d88" emissiveIntensity={0.42} metalness={0.58} roughness={0.12} />
+        <meshStandardMaterial color="#6b88ae" emissive="#6c2d88" emissiveIntensity={0.3} metalness={0.14} roughness={0.76} />
       </mesh>
       <mesh position={[0, 1.95, 0.02]}>
         <boxGeometry args={[0.74, 0.68, 0.54]} />
-        <meshStandardMaterial color="#5f7ea6" emissive="#24374d" emissiveIntensity={0.12} metalness={0.08} roughness={0.72} />
+        <meshStandardMaterial color="#5f7ea6" emissive="#24374d" emissiveIntensity={0.08} metalness={0.02} roughness={0.88} />
       </mesh>
       <mesh position={[0, 2.42, 0.08]}>
         <boxGeometry args={[0.3, 0.08, 0.08]} />
@@ -379,7 +378,7 @@ function AboutRobot() {
       </mesh>
       <mesh position={[0, 2.64, 0]}>
         <cylinderGeometry args={[0.025, 0.025, 0.34, 10]} />
-        <meshStandardMaterial color="#95a9c8" emissive="#8ef9ff" emissiveIntensity={0.14} metalness={0.5} roughness={0.14} />
+        <meshStandardMaterial color="#95a9c8" emissive="#8ef9ff" emissiveIntensity={0.08} metalness={0.16} roughness={0.54} />
       </mesh>
       <mesh position={[0, 2.83, 0]}>
         <sphereGeometry args={[0.05, 12, 12]} />
@@ -399,19 +398,19 @@ function AboutRobot() {
       </mesh>
       <mesh position={[-0.78, 1.06, 0]} rotation={[0, 0, 0.18]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.18} metalness={0.5} roughness={0.16} />
+        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.12} metalness={0.16} roughness={0.66} />
       </mesh>
       <mesh position={[0.78, 1.06, 0]} rotation={[0, 0, -0.18]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.18} metalness={0.5} roughness={0.16} />
+        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.12} metalness={0.16} roughness={0.66} />
       </mesh>
       <mesh position={[-0.28, 0.18, 0]} rotation={[0, 0, 0.06]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.18} metalness={0.5} roughness={0.16} />
+        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.12} metalness={0.16} roughness={0.66} />
       </mesh>
       <mesh position={[0.28, 0.18, 0]} rotation={[0, 0, -0.06]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.18} metalness={0.5} roughness={0.16} />
+        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.12} metalness={0.16} roughness={0.66} />
       </mesh>
       <mesh position={[0, 1.02, 0.31]}>
         <boxGeometry args={[0.6, 0.1, 0.08]} />
