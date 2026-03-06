@@ -106,54 +106,68 @@ function Hotspot({
   );
 }
 
-function EmbossedFaceLabel({
+function NeonPlaqueLabel({
   text,
   position,
   color,
+  plaqueSize = [1.8, 0.36, 0.08],
+  textSize = 0.17,
 }: {
   text: string;
   position: [number, number, number];
   color: string;
+  plaqueSize?: [number, number, number];
+  textSize?: number;
 }) {
   return (
     <>
+      <mesh position={position}>
+        <boxGeometry args={plaqueSize} />
+        <meshStandardMaterial
+          color="#120f19"
+          emissive={color}
+          emissiveIntensity={0.18}
+          metalness={0.72}
+          roughness={0.16}
+        />
+      </mesh>
       <Center position={[position[0], position[1], position[2] + 0.035]}>
         <Text3D
           font={textFont}
-          size={0.15}
-          height={0.035}
+          size={textSize}
+          height={0.045}
           bevelEnabled
-          bevelSize={0.006}
-          bevelThickness={0.006}
+          bevelSize={0.008}
+          bevelThickness={0.008}
           curveSegments={8}
         >
           {text}
           <meshStandardMaterial
-            color={color}
+            color="#fffaf5"
             emissive={color}
-            emissiveIntensity={0.45}
-            metalness={0.62}
-            roughness={0.2}
+            emissiveIntensity={1.05}
+            metalness={0.52}
+            roughness={0.14}
           />
         </Text3D>
       </Center>
       <Center position={[position[0], position[1], position[2] - 0.035]} rotation={[0, Math.PI, 0]}>
         <Text3D
           font={textFont}
-          size={0.15}
-          height={0.035}
+          size={textSize}
+          height={0.045}
           bevelEnabled
-          bevelSize={0.006}
-          bevelThickness={0.006}
+          bevelSize={0.008}
+          bevelThickness={0.008}
           curveSegments={8}
         >
           {text}
           <meshStandardMaterial
-            color={color}
+            color="#fffaf5"
             emissive={color}
-            emissiveIntensity={0.45}
-            metalness={0.62}
-            roughness={0.2}
+            emissiveIntensity={1.05}
+            metalness={0.52}
+            roughness={0.14}
           />
         </Text3D>
       </Center>
@@ -166,54 +180,69 @@ function CircularEmbossedWord({
   radius,
   y = 0,
   color,
-  clockwise = true,
+  size = 0.14,
+  bandRadius = 0.12,
 }: {
   text: string;
   radius: number;
   y?: number;
   color: string;
-  clockwise?: boolean;
+  size?: number;
+  bandRadius?: number;
 }) {
   const chars = text.split('');
-  const spread = Math.PI * 0.82;
+  const spread = Math.PI * 0.92;
   const start = -spread / 2;
 
   return (
     <group position={[0, y, 0]}>
-      {chars.map((char, index) => {
-        const t = chars.length === 1 ? 0.5 : index / (chars.length - 1);
-        const angle = start + t * spread;
-        const x = Math.sin(angle) * radius;
-        const z = Math.cos(angle) * radius;
-        const rotationY = (clockwise ? 1 : -1) * angle;
+      <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[radius, bandRadius, 18, 96]} />
+        <meshStandardMaterial
+          color="#130f1b"
+          emissive={color}
+          emissiveIntensity={0.18}
+          metalness={0.68}
+          roughness={0.16}
+        />
+      </mesh>
+      {[0, Math.PI].map((sideRotation) => (
+        <group key={sideRotation} rotation={[0, sideRotation, 0]}>
+          {chars.map((char, index) => {
+            const t = chars.length === 1 ? 0.5 : index / (chars.length - 1);
+            const angle = start + t * spread;
+            const x = Math.sin(angle) * radius;
+            const z = Math.cos(angle) * radius;
 
-        return (
-          <Center
-            key={`${text}-${index}-${char}`}
-            position={[x, 0, z]}
-            rotation={[0, rotationY, 0]}
-          >
-            <Text3D
-              font={textFont}
-              size={0.1}
-              height={0.028}
-              bevelEnabled
-              bevelSize={0.004}
-              bevelThickness={0.004}
-              curveSegments={6}
-            >
-              {char}
-              <meshStandardMaterial
-                color={color}
-                emissive={color}
-                emissiveIntensity={0.42}
-                metalness={0.55}
-                roughness={0.24}
-              />
-            </Text3D>
-          </Center>
-        );
-      })}
+            return (
+              <Center
+                key={`${text}-${sideRotation}-${index}-${char}`}
+                position={[x, 0, z]}
+                rotation={[0, angle, 0]}
+              >
+                <Text3D
+                  font={textFont}
+                  size={size}
+                  height={0.045}
+                  bevelEnabled
+                  bevelSize={0.006}
+                  bevelThickness={0.006}
+                  curveSegments={6}
+                >
+                  {char}
+                  <meshStandardMaterial
+                    color="#fffaf5"
+                    emissive={color}
+                    emissiveIntensity={0.95}
+                    metalness={0.48}
+                    roughness={0.16}
+                  />
+                </Text3D>
+              </Center>
+            );
+          })}
+        </group>
+      ))}
     </group>
   );
 }
@@ -279,8 +308,18 @@ export default function InteractiveObjects({
       >
         <group>
           <AssetModel assetUrl={laptopAssetUrl} rotation={[-0.18, 0.32, 0]} scale={0.92} />
-          <group rotation={[-0.18, 0.32, 0]} position={[0, 1.02, -0.55]}>
-            <EmbossedFaceLabel text="PROJECTS" position={[0, 0, 0]} color="#8ef9ff" />
+          <mesh position={[0, -0.05, 0.08]} rotation={[-0.18, 0.32, 0]}>
+            <boxGeometry args={[1.72, 0.12, 1.18]} />
+            <meshStandardMaterial color="#111721" emissive="#143244" emissiveIntensity={0.18} metalness={0.7} roughness={0.2} />
+          </mesh>
+          <group rotation={[-0.18, 0.32, 0]} position={[0, 1.08, -0.58]}>
+            <NeonPlaqueLabel
+              text="PROJECTS"
+              position={[0, 0, 0]}
+              color="#8ef9ff"
+              plaqueSize={[2.32, 0.42, 0.09]}
+              textSize={0.19}
+            />
           </group>
         </group>
       </Hotspot>
@@ -314,7 +353,13 @@ export default function InteractiveObjects({
             <boxGeometry args={[2.45, 0.78, 0.03]} />
             <meshStandardMaterial color="#2d0d25" emissive="#ff00aa" emissiveIntensity={0.4} />
           </mesh>
-          <EmbossedFaceLabel text="ABOUT" position={[0, -0.08, 0]} color="#ff7bd3" />
+          <NeonPlaqueLabel
+            text="ABOUT"
+            position={[0, -0.08, 0]}
+            color="#ff7bd3"
+            plaqueSize={[2.22, 0.44, 0.09]}
+            textSize={0.2}
+          />
         </group>
       </Hotspot>
 
@@ -326,11 +371,17 @@ export default function InteractiveObjects({
       >
         <group>
           <AssetModel assetUrl={cocktailAssetUrl} scale={0.88} />
+          <mesh position={[0, -0.08, 0]}>
+            <cylinderGeometry args={[0.42, 0.48, 0.08, 28]} />
+            <meshStandardMaterial color="#111723" emissive="#13303d" emissiveIntensity={0.18} metalness={0.72} roughness={0.18} />
+          </mesh>
           <CircularEmbossedWord
             text="MIAMI"
-            radius={0.47}
-            y={0.62}
+            radius={0.56}
+            y={0.58}
             color={sunsetMode ? '#ffd089' : '#ffff8f'}
+            size={0.12}
+            bandRadius={0.09}
           />
         </group>
       </Hotspot>
@@ -343,7 +394,22 @@ export default function InteractiveObjects({
       >
         <group>
           <AssetModel assetUrl={contactOrbAssetUrl} scale={0.95} />
-          <CircularEmbossedWord text="CONTACT" radius={0.9} y={0} color="#c7b4ff" />
+          <mesh position={[0, -0.62, 0]}>
+            <cylinderGeometry args={[0.1, 0.14, 0.9, 16]} />
+            <meshStandardMaterial color="#141622" emissive="#2f215a" emissiveIntensity={0.22} metalness={0.66} roughness={0.22} />
+          </mesh>
+          <mesh position={[0, -1.05, 0]}>
+            <cylinderGeometry args={[0.42, 0.52, 0.12, 28]} />
+            <meshStandardMaterial color="#131621" emissive="#34245d" emissiveIntensity={0.2} metalness={0.7} roughness={0.18} />
+          </mesh>
+          <CircularEmbossedWord
+            text="CONTACT"
+            radius={1.02}
+            y={0}
+            color="#d8c7ff"
+            size={0.135}
+            bandRadius={0.11}
+          />
         </group>
       </Hotspot>
 
