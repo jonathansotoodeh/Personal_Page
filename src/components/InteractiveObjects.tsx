@@ -1,7 +1,10 @@
-import { Html, Text, useCursor } from '@react-three/drei';
+import { Center, Html, Text3D, useCursor } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { type ReactNode, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
+import helvetikerFont from 'three/examples/fonts/helvetiker_bold.typeface.json';
+
+const textFont = helvetikerFont as unknown as string;
 
 interface InteractiveObjectsProps {
   sunsetMode: boolean;
@@ -15,12 +18,21 @@ interface HotspotProps {
   color: string;
   glowColor?: string;
   hint: string;
+  hitboxScale?: [number, number, number];
   onSelect: () => void;
   position: [number, number, number];
   children: ReactNode;
 }
 
-function Hotspot({ color, glowColor, hint, onSelect, position, children }: HotspotProps) {
+function Hotspot({
+  color,
+  glowColor,
+  hint,
+  hitboxScale = [1.8, 1.8, 1.8],
+  onSelect,
+  position,
+  children,
+}: HotspotProps) {
   const group = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState(false);
   useCursor(hovered, 'pointer', 'auto');
@@ -54,12 +66,33 @@ function Hotspot({ color, glowColor, hint, onSelect, position, children }: Hotsp
       }}
     >
       {children}
-      <mesh>
-        <sphereGeometry args={[0.54, 20, 20]} />
+      <mesh renderOrder={20}>
+        <sphereGeometry args={[0.62, 20, 20]} />
         <meshBasicMaterial
           color={hovered ? glowColor ?? color : color}
           transparent
-          opacity={hovered ? 0.22 : 0.1}
+          opacity={hovered ? 0.18 : 0.08}
+          depthWrite={false}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      <mesh renderOrder={21}>
+        <sphereGeometry args={[0.54, 20, 20]} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={0.001}
+          depthWrite={false}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      <mesh scale={hitboxScale} renderOrder={5}>
+        <sphereGeometry args={[0.72, 24, 24]} />
+        <meshBasicMaterial
+          transparent
+          opacity={0.001}
+          depthWrite={false}
+          side={THREE.DoubleSide}
         />
       </mesh>
       {hovered && (
@@ -130,6 +163,7 @@ export default function InteractiveObjects({
         color="#00ffff"
         glowColor="#9afcff"
         hint="Open projects"
+        hitboxScale={[2.4, 1.9, 2.2]}
         onSelect={onOpenProjects}
         position={[-2.55, 1.02, 0.95]}
       >
@@ -181,6 +215,7 @@ export default function InteractiveObjects({
         color="#ff00aa"
         glowColor="#ff7bd3"
         hint="Read bio"
+        hitboxScale={[2.8, 1.8, 1.8]}
         onSelect={onOpenBio}
         position={[2.55, 2.2, -0.3]}
       >
@@ -203,18 +238,26 @@ export default function InteractiveObjects({
             <boxGeometry args={[0.08, 0.58, 0.08]} />
             <meshStandardMaterial color="#0f1018" emissive="#ff00aa" emissiveIntensity={0.9} />
           </mesh>
-          <Text
-            position={[0, 0.02, 0.05]}
-            fontSize={0.28}
-            letterSpacing={0.08}
-            color="#ff7bd3"
-            anchorX="center"
-            anchorY="middle"
-            outlineColor="#270818"
-            outlineWidth={0.02}
-          >
-            ABOUT
-          </Text>
+          <Center position={[0, -0.08, 0.07]}>
+            <Text3D
+              font={textFont}
+              size={0.22}
+              height={0.05}
+              bevelEnabled
+              bevelSize={0.01}
+              bevelThickness={0.01}
+              curveSegments={8}
+            >
+              ABOUT
+              <meshStandardMaterial
+                color="#ff7bd3"
+                emissive="#ff00aa"
+                emissiveIntensity={0.9}
+                metalness={0.5}
+                roughness={0.18}
+              />
+            </Text3D>
+          </Center>
         </group>
       </Hotspot>
 
@@ -222,6 +265,7 @@ export default function InteractiveObjects({
         color={sunsetMode ? '#ffb347' : '#ffff00'}
         glowColor="#fff5a8"
         hint="Toggle Miami mode"
+        hitboxScale={[1.9, 2.6, 1.9]}
         onSelect={onToggleMiami}
         position={[2.25, 0.88, 1.35]}
       >
@@ -255,6 +299,7 @@ export default function InteractiveObjects({
         color="#8b5cf6"
         glowColor="#bca5ff"
         hint="Open contact links"
+        hitboxScale={[2.2, 2.2, 2.2]}
         onSelect={onOpenContact}
         position={[0.15, 2.55, 1.75]}
       >

@@ -49,7 +49,7 @@ export default function ContactOverlay({ open, onClose }: ContactOverlayProps) {
               className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:border-neonPink/50 hover:bg-white/10"
               href={link.href}
               rel="noreferrer"
-              target="_blank"
+              target={link.href.startsWith('mailto:') ? undefined : '_blank'}
             >
               <span className={`font-display text-xl ${link.tone}`}>{link.label}</span>
             </a>

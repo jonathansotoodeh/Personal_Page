@@ -18,28 +18,28 @@ export interface ContactItem {
 }
 
 export const profile = {
-  name: 'Jay Sotoodeh',
-  shortName: 'jay',
+  name: 'Jonathan Sotoodeh',
+  shortName: 'jonathan',
   handle: '@jtsotoodeh',
   city: 'Miami',
   bio:
-    'Jay Sotoodeh is a Miami-based developer focused on immersive web experiences, creative coding, and 3D frontends built with modern React tooling.',
+    'Jonathan Sotoodeh is a Miami-based developer focused on immersive web experiences, creative coding, and 3D frontends built with modern React tooling.',
   summary:
     'Currently shipping a public React Three Fiber portfolio, building interaction-heavy frontends, and shaping a stronger public body of work around web, motion, and real-time 3D.',
   focus: 'React, TypeScript, React Three Fiber, Tailwind CSS, GSAP, GitHub Pages',
-  currentBuild: "Jay's Neon Cyber Haven",
+  currentBuild: "Jonathan's Neon Cyber Haven",
   githubRepos: 1,
 };
 
 export const socialLinks: SocialLink[] = [
-  { label: 'X', href: 'https://x.com/jtsotoodeh' },
+  { label: 'MAIL', href: 'mailto:jonathan.sotoodeh@kaseya.com' },
   { label: 'GH', href: 'https://github.com/jonathansotoodeh' },
   { label: 'IN', href: 'https://www.linkedin.com/in/jonathansotoodeh/' },
 ];
 
 export const projects: ProjectCard[] = [
   {
-    title: "Jay's Neon Cyber Haven",
+    title: "Jonathan's Neon Cyber Haven",
     description:
       'The live 3D portfolio experience: a cyberpunk Miami loft built with React Three Fiber, postprocessing, responsive overlays, and GitHub Pages deployment.',
     stack: 'Vite, React, TypeScript, React Three Fiber, Drei, Tailwind, GSAP',
@@ -57,7 +57,7 @@ export const projects: ProjectCard[] = [
   {
     title: 'GitHub Profile',
     description:
-      "Jay's public code home. Right now it reflects an early public footprint centered on this portfolio and future work still coming online.",
+      "Jonathan's public code home. Right now it reflects an early public footprint centered on this portfolio and future work still coming online.",
     stack: 'Public Profile, Source Control, Deployment History',
     href: 'https://github.com/jonathansotoodeh',
     linkLabel: 'Open Profile',
@@ -66,8 +66,8 @@ export const projects: ProjectCard[] = [
 
 export const contactItems: ContactItem[] = [
   {
-    label: 'X / @jtsotoodeh',
-    href: 'https://x.com/jtsotoodeh',
+    label: 'Email / jonathan.sotoodeh@kaseya.com',
+    href: 'mailto:jonathan.sotoodeh@kaseya.com',
     tone: 'text-neonCyan',
   },
   {
@@ -82,6 +82,7 @@ export const contactItems: ContactItem[] = [
   },
   {
     label: 'Location / Miami, FL',
+    href: 'https://www.google.com/maps/search/Miami,+FL',
     tone: 'text-white',
   },
 ];

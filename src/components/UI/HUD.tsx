@@ -59,9 +59,9 @@ export default function HUD({
       <div ref={headerRef} className="pointer-events-none fixed inset-x-0 top-0 z-20 p-4 md:p-6">
         <div className="flex items-start justify-between gap-4">
           <div className="pointer-events-auto panel-shell max-w-md p-4 md:p-5">
-            <p className="hud-label text-neonCyan">jay</p>
+            <p className="hud-label text-neonCyan">jonathan</p>
             <h1 className="mt-3 font-display text-2xl uppercase tracking-[0.35em] text-white md:text-4xl">
-              Jay's Neon Cyber Haven
+              Jonathan's Neon Cyber Haven
             </h1>
             <p className="mt-3 max-w-md text-sm text-white/75 md:text-base">
               {profile.name} builds immersive web interfaces from {profile.city},
