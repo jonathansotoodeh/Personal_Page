@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: 'Rajdhani', sans-serif;
+  background: #08040f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(255, 0, 170, 0.16), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(0, 255, 255, 0.12), transparent 24%),
+    #08040f;
+  color: #f9f7ff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+@layer base {
+  ::selection {
+    background: rgba(0, 255, 255, 0.28);
+    color: white;
+  }
+}
+
+@layer components {
+  .panel-shell {
+    @apply rounded-[2rem] border border-white/10 bg-black/45 shadow-neon backdrop-blur-2xl;
+  }
+
+  .hud-chip {
+    @apply rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/80 transition hover:-translate-y-0.5 hover:border-neonCyan/50 hover:text-neonCyan;
+  }
+
+  .hud-label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.45em] text-white/55;
+  }
+}
