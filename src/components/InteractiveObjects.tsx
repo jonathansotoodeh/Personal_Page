@@ -141,13 +141,7 @@ function NeonPlaqueLabel({
           curveSegments={8}
         >
           {text}
-          <meshStandardMaterial
-            color="#fffaf5"
-            emissive={color}
-            emissiveIntensity={1.05}
-            metalness={0.52}
-            roughness={0.14}
-          />
+          <meshBasicMaterial color="#fffaf5" toneMapped={false} />
         </Text3D>
       </Center>
       <Center position={[position[0], position[1], position[2] - 0.035]} rotation={[0, Math.PI, 0]}>
@@ -161,13 +155,7 @@ function NeonPlaqueLabel({
           curveSegments={8}
         >
           {text}
-          <meshStandardMaterial
-            color="#fffaf5"
-            emissive={color}
-            emissiveIntensity={1.05}
-            metalness={0.52}
-            roughness={0.14}
-          />
+          <meshBasicMaterial color="#fffaf5" toneMapped={false} />
         </Text3D>
       </Center>
     </>
@@ -229,13 +217,7 @@ function CircularEmbossedWord({
                   curveSegments={6}
                 >
                   {char}
-                  <meshStandardMaterial
-                    color="#fffaf5"
-                    emissive={color}
-                    emissiveIntensity={0.95}
-                    metalness={0.48}
-                    roughness={0.16}
-                  />
+                  <meshBasicMaterial color="#fffaf5" toneMapped={false} />
                 </Text3D>
               </Center>
             );
@@ -322,9 +304,10 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
         textAlign="center"
         anchorX="center"
         anchorY="middle"
-        color="#061018"
-        outlineColor={sunsetMode ? '#fff2cf' : '#f1ffff'}
-        outlineWidth={0.014}
+        color="#f8feff"
+        outlineColor="#09131b"
+        outlineWidth={0.008}
+        material-toneMapped={false}
       >
         PROJECTS
       </Text>
@@ -371,17 +354,19 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
 function AboutRobot() {
   return (
     <group rotation={[0, -0.18, 0]}>
+      <pointLight position={[0.2, 2.1, 1.8]} intensity={18} distance={5.5} color="#dff7ff" />
+      <pointLight position={[-0.9, 1.8, 0.9]} intensity={9} distance={4} color="#ffd3f1" />
       <mesh position={[0, 0.1, 0]}>
         <cylinderGeometry args={[0.62, 0.74, 0.16, 8]} />
-        <meshStandardMaterial color="#23324a" emissive="#4d1f60" emissiveIntensity={0.3} metalness={0.68} roughness={0.16} />
+        <meshStandardMaterial color="#506989" emissive="#6b2e83" emissiveIntensity={0.38} metalness={0.56} roughness={0.14} />
       </mesh>
       <mesh position={[0, 0.96, 0]}>
         <boxGeometry args={[1.08, 1.24, 0.56]} />
-        <meshStandardMaterial color="#2a3b56" emissive="#4f1f6c" emissiveIntensity={0.34} metalness={0.72} roughness={0.14} />
+        <meshStandardMaterial color="#6b88ae" emissive="#6c2d88" emissiveIntensity={0.42} metalness={0.58} roughness={0.12} />
       </mesh>
       <mesh position={[0, 1.95, 0.02]}>
         <boxGeometry args={[0.74, 0.68, 0.54]} />
-        <meshStandardMaterial color="#324463" emissive="#2d3954" emissiveIntensity={0.36} metalness={0.68} roughness={0.14} />
+        <meshStandardMaterial color="#86a7cf" emissive="#365a7d" emissiveIntensity={0.34} metalness={0.46} roughness={0.12} />
       </mesh>
       <mesh position={[0, 2.42, 0.08]}>
         <boxGeometry args={[0.3, 0.08, 0.08]} />
@@ -409,19 +394,19 @@ function AboutRobot() {
       </mesh>
       <mesh position={[-0.78, 1.06, 0]} rotation={[0, 0, 0.18]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#51688f" emissive="#1f2e48" emissiveIntensity={0.2} metalness={0.62} roughness={0.18} />
+        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.18} metalness={0.5} roughness={0.16} />
       </mesh>
       <mesh position={[0.78, 1.06, 0]} rotation={[0, 0, -0.18]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#51688f" emissive="#1f2e48" emissiveIntensity={0.2} metalness={0.62} roughness={0.18} />
+        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.18} metalness={0.5} roughness={0.16} />
       </mesh>
       <mesh position={[-0.28, 0.18, 0]} rotation={[0, 0, 0.06]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#51688f" emissive="#1f2e48" emissiveIntensity={0.2} metalness={0.62} roughness={0.18} />
+        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.18} metalness={0.5} roughness={0.16} />
       </mesh>
       <mesh position={[0.28, 0.18, 0]} rotation={[0, 0, -0.06]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#51688f" emissive="#1f2e48" emissiveIntensity={0.2} metalness={0.62} roughness={0.18} />
+        <meshStandardMaterial color="#90abd1" emissive="#29476b" emissiveIntensity={0.18} metalness={0.5} roughness={0.16} />
       </mesh>
       <mesh position={[0, 1.02, 0.31]}>
         <boxGeometry args={[0.6, 0.1, 0.08]} />
@@ -515,13 +500,7 @@ export default function InteractiveObjects({
               curveSegments={8}
             >
               CONTACT
-              <meshStandardMaterial
-                color="#f8f3ff"
-                emissive="#d8c7ff"
-                emissiveIntensity={0.92}
-                metalness={0.42}
-                roughness={0.16}
-              />
+              <meshBasicMaterial color="#f8f3ff" toneMapped={false} />
             </Text3D>
           </Center>
         </group>

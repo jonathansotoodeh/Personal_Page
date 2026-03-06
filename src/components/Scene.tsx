@@ -1,6 +1,6 @@
 import { Html, Environment, Lightformer, OrbitControls, Sparkles } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Bloom, ChromaticAberration, EffectComposer, Noise, Vignette } from '@react-three/postprocessing';
+import { Bloom, EffectComposer, Vignette } from '@react-three/postprocessing';
 import { lazy, Suspense, useEffect, useMemo, useRef } from 'react';
 import type { MutableRefObject } from 'react';
 import * as THREE from 'three';
@@ -96,8 +96,6 @@ function SceneContent({
   readyFlag,
 }: SceneContentProps) {
   const roomGroup = useRef<THREE.Group>(null);
-  const chromaticOffset = useMemo(() => new THREE.Vector2(0.00018, 0.00024), []);
-
   useEffect(() => {
     if (readyFlag.current) {
       return;
@@ -226,20 +224,14 @@ function SceneContent({
         autoRotateSpeed={0.3}
       />
 
-      <EffectComposer enableNormalPass={false} multisampling={isMobile ? 0 : 4}>
+      <EffectComposer enableNormalPass={false} multisampling={isMobile ? 0 : 8}>
         <Bloom
           mipmapBlur
-          intensity={sunsetMode ? 0.95 : 1.08}
-          luminanceThreshold={0.22}
-          radius={0.48}
+          intensity={sunsetMode ? 0.68 : 0.82}
+          luminanceThreshold={0.3}
+          radius={0.34}
         />
-        <ChromaticAberration
-          offset={chromaticOffset}
-          radialModulation={false}
-          modulationOffset={0}
-        />
-        <Noise premultiply opacity={0.014} />
-        <Vignette eskil={false} offset={0.16} darkness={0.72} />
+        <Vignette eskil={false} offset={0.12} darkness={0.58} />
       </EffectComposer>
     </>
   );
