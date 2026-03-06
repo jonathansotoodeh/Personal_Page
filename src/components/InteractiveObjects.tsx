@@ -354,8 +354,8 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
 function AboutRobot() {
   return (
     <group rotation={[0, -0.18, 0]}>
-      <pointLight position={[0.2, 2.1, 1.8]} intensity={18} distance={5.5} color="#dff7ff" />
-      <pointLight position={[-0.9, 1.8, 0.9]} intensity={9} distance={4} color="#ffd3f1" />
+      <pointLight position={[0.2, 2.1, 1.8]} intensity={11} distance={5.2} color="#dff7ff" />
+      <pointLight position={[-0.9, 1.8, 0.9]} intensity={5} distance={3.8} color="#ffd3f1" />
       <mesh position={[0, 0.1, 0]}>
         <cylinderGeometry args={[0.62, 0.74, 0.16, 8]} />
         <meshStandardMaterial color="#506989" emissive="#6b2e83" emissiveIntensity={0.38} metalness={0.56} roughness={0.14} />
@@ -382,11 +382,11 @@ function AboutRobot() {
       </mesh>
       <mesh position={[-0.17, 1.98, 0.29]}>
         <sphereGeometry args={[0.06, 14, 14]} />
-        <meshStandardMaterial color="#8ef9ff" emissive="#00ffff" emissiveIntensity={1.2} />
+        <meshStandardMaterial color="#8ef9ff" emissive="#00ffff" emissiveIntensity={0.72} />
       </mesh>
       <mesh position={[0.17, 1.98, 0.29]}>
         <sphereGeometry args={[0.06, 14, 14]} />
-        <meshStandardMaterial color="#ff7bd3" emissive="#ff00aa" emissiveIntensity={1.2} />
+        <meshStandardMaterial color="#ff7bd3" emissive="#ff00aa" emissiveIntensity={0.72} />
       </mesh>
       <mesh position={[0, 1.7, 0.3]}>
         <boxGeometry args={[0.24, 0.06, 0.06]} />
