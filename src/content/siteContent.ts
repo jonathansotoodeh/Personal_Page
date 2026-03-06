@@ -23,10 +23,11 @@ export const profile = {
   handle: '@jtsotoodeh',
   city: 'Miami',
   bio:
-    'Jonathan Sotoodeh is a Miami-based developer focused on immersive web experiences, creative coding, and 3D frontends built with modern React tooling.',
+    'Jonathan Sotoodeh is a Miami-based developer and Sr. Analyst in GTM Strategy & Operations at Kaseya, blending systems thinking with immersive web, creative coding, and modern 3D frontend work.',
   summary:
-    'Currently shipping a public React Three Fiber portfolio, building interaction-heavy frontends, and shaping a stronger public body of work around web, motion, and real-time 3D.',
-  focus: 'React, TypeScript, React Three Fiber, Tailwind CSS, GSAP, GitHub Pages',
+    'His current portfolio direction combines strategic product and operations perspective with interaction-heavy frontend work, motion systems, and real-time 3D experiences on the web.',
+  focus:
+    'GTM strategy and operations, React, TypeScript, React Three Fiber, Tailwind CSS, GSAP, and GitHub Pages deployment',
   currentBuild: "Jonathan's Neon Cyber Haven",
   githubRepos: 1,
 };

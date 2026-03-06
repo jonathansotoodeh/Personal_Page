@@ -1,8 +1,11 @@
-import { Center, Html, Text3D, useCursor } from '@react-three/drei';
+import { Center, Html, Text3D, useCursor, useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { type ReactNode, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import helvetikerFont from 'three/examples/fonts/helvetiker_bold.typeface.json';
+import cocktailAssetUrl from '../assets/generated/cocktail.glb?url';
+import contactOrbAssetUrl from '../assets/generated/contact-orb.glb?url';
+import laptopAssetUrl from '../assets/generated/laptop.glb?url';
 
 const textFont = helvetikerFont as unknown as string;
 
@@ -21,6 +24,21 @@ interface HotspotProps {
   onSelect: () => void;
   position: [number, number, number];
   children: ReactNode;
+}
+
+function AssetModel({
+  assetUrl,
+  rotation,
+  scale = 1,
+}: {
+  assetUrl: string;
+  rotation?: [number, number, number];
+  scale?: number;
+}) {
+  const gltf = useGLTF(assetUrl);
+  const clone = useMemo(() => gltf.scene.clone(true), [gltf.scene]);
+
+  return <primitive object={clone} rotation={rotation} scale={scale} />;
 }
 
 function Hotspot({
@@ -157,60 +175,7 @@ export default function InteractiveObjects({
         onSelect={onOpenProjects}
         position={[-2.55, 1.02, 0.95]}
       >
-        <group castShadow>
-          <mesh position={[0, 0.06, 0]} rotation={[-0.18, 0.32, 0]}>
-            <boxGeometry args={[1.28, 0.08, 0.9]} />
-            <meshStandardMaterial color="#1a2130" metalness={0.78} roughness={0.2} />
-          </mesh>
-          <mesh position={[0, 0.44, -0.32]} rotation={[-1.12, 0.32, 0]}>
-            <boxGeometry args={[1.24, 0.78, 0.05]} />
-            <meshStandardMaterial
-              color="#0f1724"
-              emissive="#092f3a"
-              emissiveIntensity={0.9}
-              metalness={0.25}
-              roughness={0.15}
-            />
-          </mesh>
-          <mesh position={[0, 0.44, -0.29]} rotation={[-1.12, 0.32, 0]}>
-            <boxGeometry args={[1, 0.56, 0.02]} />
-            <meshStandardMaterial
-              color={sunsetMode ? '#ffb347' : '#80ffff'}
-              emissive={sunsetMode ? '#ffb347' : '#00ffff'}
-              emissiveIntensity={1.1}
-            />
-          </mesh>
-          <mesh position={[0, 0.17, 0.27]} rotation={[-0.18, 0.32, 0]}>
-            <boxGeometry args={[0.88, 0.03, 0.28]} />
-            <meshStandardMaterial color="#111a28" metalness={0.72} roughness={0.24} />
-          </mesh>
-          {[-0.28, 0, 0.28].map((x) => (
-            <mesh key={x} position={[x, 0.17, 0.27]} rotation={[-0.18, 0.32, 0]}>
-              <boxGeometry args={[0.18, 0.031, 0.18]} />
-              <meshStandardMaterial
-                color="#152133"
-                emissive={sunsetMode ? '#ffb347' : '#00ffff'}
-                emissiveIntensity={0.25}
-              />
-            </mesh>
-          ))}
-          <mesh position={[0.56, -0.12, -0.1]} rotation={[-0.18, 0.32, 0]}>
-            <cylinderGeometry args={[0.03, 0.03, 0.28, 10]} />
-            <meshStandardMaterial color="#51596b" metalness={0.8} roughness={0.2} />
-          </mesh>
-          <mesh position={[-0.5, 0.37, -0.22]} rotation={[-1.12, 0.32, 0]}>
-            <cylinderGeometry args={[0.02, 0.02, 0.42, 10]} />
-            <meshStandardMaterial color="#7fe8ff" emissive="#00ffff" emissiveIntensity={0.8} />
-          </mesh>
-          <mesh position={[0, 0.88, -0.56]}>
-            <boxGeometry args={[1.3, 0.16, 0.08]} />
-            <meshStandardMaterial color="#122338" emissive="#00ffff" emissiveIntensity={0.55} />
-          </mesh>
-          <mesh position={[0, 1.08, -0.56]}>
-            <boxGeometry args={[1.02, 0.22, 0.03]} />
-            <meshStandardMaterial color="#86ffff" emissive="#00ffff" emissiveIntensity={1.1} />
-          </mesh>
-        </group>
+        <AssetModel assetUrl={laptopAssetUrl} rotation={[-0.18, 0.32, 0]} scale={0.92} />
       </Hotspot>
 
       <Hotspot
@@ -273,52 +238,7 @@ export default function InteractiveObjects({
         onSelect={onToggleMiami}
         position={[2.25, 0.88, 1.35]}
       >
-        <group castShadow>
-          <mesh position={[0, -0.1, 0]}>
-            <cylinderGeometry args={[0.22, 0.26, 0.08, 20]} />
-            <meshStandardMaterial color="#101722" metalness={0.74} roughness={0.22} />
-          </mesh>
-          <mesh position={[0, 0.02, 0]}>
-            <cylinderGeometry args={[0.04, 0.05, 0.22, 12]} />
-            <meshStandardMaterial color="#d9ffff" metalness={0.18} roughness={0.12} />
-          </mesh>
-          <mesh position={[0, 0.33, 0]}>
-            <cylinderGeometry args={[0.1, 0.22, 0.72, 18, 1, true]} />
-            <meshPhysicalMaterial
-              color="#a9faff"
-              transmission={0.95}
-              transparent
-              opacity={0.34}
-              roughness={0.02}
-            />
-          </mesh>
-          <mesh position={[0, 0.68, 0]}>
-            <coneGeometry args={[0.32, 0.44, 12]} />
-            <meshStandardMaterial
-              color={sunsetMode ? '#ffb347' : '#ffff00'}
-              emissive={sunsetMode ? '#ffb347' : '#ffff00'}
-              emissiveIntensity={1.1}
-            />
-          </mesh>
-          <mesh position={[0, 1.02, 0]}>
-            <sphereGeometry args={[0.1, 16, 16]} />
-            <meshBasicMaterial color={sunsetMode ? '#ff6f61' : '#00ffff'} />
-          </mesh>
-          <mesh position={[0, 0.46, 0]}>
-            <cylinderGeometry args={[0.14, 0.18, 0.28, 18]} />
-            <meshStandardMaterial
-              color={sunsetMode ? '#ff8a4e' : '#37c8ff'}
-              emissive={sunsetMode ? '#ff8a4e' : '#00ffff'}
-              emissiveIntensity={0.45}
-              transparent
-              opacity={0.7}
-            />
-          </mesh>
-          <mesh position={[0.12, 0.87, 0.02]} rotation={[0.2, 0, -0.18]}>
-            <cylinderGeometry args={[0.012, 0.012, 0.36, 10]} />
-            <meshStandardMaterial color="#fff3b0" emissive="#ffff00" emissiveIntensity={0.35} />
-          </mesh>
-        </group>
+        <AssetModel assetUrl={cocktailAssetUrl} scale={0.88} />
       </Hotspot>
 
       <Hotspot
@@ -328,34 +248,7 @@ export default function InteractiveObjects({
         onSelect={onOpenContact}
         position={[0.15, 2.55, 1.75]}
       >
-        <group>
-          <mesh>
-            <icosahedronGeometry args={[0.42, 2]} />
-            <meshStandardMaterial
-              color="#8b5cf6"
-              emissive="#8b5cf6"
-              emissiveIntensity={1.5}
-              roughness={0.1}
-              metalness={0.18}
-            />
-          </mesh>
-          <mesh scale={[1.7, 1.7, 1.7]}>
-            <icosahedronGeometry args={[0.42, 2]} />
-            <meshBasicMaterial color="#00ffff" transparent opacity={0.08} />
-          </mesh>
-          <mesh rotation={[0.6, 0.4, 0]}>
-            <torusGeometry args={[0.62, 0.018, 16, 64]} />
-            <meshStandardMaterial color="#00ffff" emissive="#00ffff" emissiveIntensity={0.8} />
-          </mesh>
-          <mesh rotation={[-0.2, 0.8, 1.3]}>
-            <torusGeometry args={[0.8, 0.014, 14, 64]} />
-            <meshStandardMaterial color="#ff00aa" emissive="#ff00aa" emissiveIntensity={0.75} />
-          </mesh>
-          <mesh position={[0.58, 0.18, -0.05]}>
-            <sphereGeometry args={[0.06, 12, 12]} />
-            <meshStandardMaterial color="#ffff00" emissive="#ffff00" emissiveIntensity={1} />
-          </mesh>
-        </group>
+        <AssetModel assetUrl={contactOrbAssetUrl} scale={0.95} />
       </Hotspot>
 
       <group position={[4.35, 1.8, -1.5]}>
@@ -387,3 +280,7 @@ export default function InteractiveObjects({
     </group>
   );
 }
+
+useGLTF.preload(laptopAssetUrl);
+useGLTF.preload(cocktailAssetUrl);
+useGLTF.preload(contactOrbAssetUrl);
