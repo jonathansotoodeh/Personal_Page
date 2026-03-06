@@ -32,7 +32,7 @@ export const profile = {
     'He builds AI systems tied to revenue, cost savings, and executive decision-making across GTM, renewals, and finance.',
   focus:
     'Internal AI innovation, strategic finance, GTM execution, founder-led product building, and strategy.',
-  currentBuild: "Jonathan's Neon Cyber Haven",
+  currentBuild: "Jonathan's Neon Cyber Headquarters",
   githubRepos: 1,
 };
 
@@ -53,7 +53,7 @@ export const profileHighlights: ProfileHighlight[] = [
       'Raised a $90K seed round, led robotics product development from idea to working prototype, partnered with major brands, and improved gross margins by 29%.',
   },
   {
-    title: 'Education',
+    title: 'University',
     body:
       'Michigan Ross MBA, 3.94 GPA, High Distinction. USC business graduate in finance, Magna Cum Laude, USC Ice Hockey, and named 1 of 30 Marshall Graduates of the Last Decade.',
   },
@@ -72,7 +72,7 @@ export const socialLinks: SocialLink[] = [
 
 export const projects: ProjectCard[] = [
   {
-    title: "Jonathan's Neon Cyber Haven",
+    title: "Jonathan's Neon Cyber Headquarters",
     description:
       'The live 3D portfolio experience: a cyberpunk Miami loft built with React Three Fiber, postprocessing, responsive overlays, and GitHub Pages deployment.',
     stack: 'Vite, React, TypeScript, React Three Fiber, Drei, Tailwind, GSAP',
@@ -90,8 +90,8 @@ export const projects: ProjectCard[] = [
   {
     title: 'GitHub Profile',
     description:
-      "Jonathan's public code home. Right now it reflects an early public footprint centered on this portfolio and future work still coming online.",
-    stack: 'Public Profile, Source Control, Deployment History',
+      "Jonathan's public GitHub account. The current public footprint shows one repository today, with additional work not yet exposed publicly.",
+    stack: 'Public Profile, Repository Index, Deployment History',
     href: 'https://github.com/jonathansotoodeh',
     linkLabel: 'Open Profile',
   },

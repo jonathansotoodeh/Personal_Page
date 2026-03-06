@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
-import { projects } from '../../content/siteContent';
+import { profile, projects } from '../../content/siteContent';
 
 interface ProjectsOverlayProps {
   open: boolean;
@@ -33,8 +33,11 @@ export default function ProjectsOverlay({ open, onClose }: ProjectsOverlayProps)
           <div>
             <p className="hud-label text-neonPink">Projects</p>
             <h2 className="mt-3 font-display text-3xl md:text-4xl">
-              Build log from the haven
+              Build log from headquarters
             </h2>
+            <p className="mt-3 text-sm uppercase tracking-[0.3em] text-white/55">
+              {profile.githubRepos} public repository currently visible on GitHub
+            </p>
           </div>
           <button className="hud-chip" onClick={onClose}>
             Close

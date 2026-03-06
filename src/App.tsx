@@ -47,7 +47,7 @@ class SceneBoundary extends Component<SceneBoundaryProps, SceneBoundaryState> {
               System Alert
             </p>
             <h1 className="mt-3 font-display text-4xl text-neonCyan">
-              The haven failed to boot.
+              The headquarters failed to boot.
             </h1>
             <p className="mt-4 text-lg text-white/70">
               WebGL is unavailable or the scene crashed. Refresh once, then

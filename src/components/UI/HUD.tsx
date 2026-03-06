@@ -61,7 +61,7 @@ export default function HUD({
           <div className="pointer-events-auto panel-shell max-w-md p-4 md:p-5">
             <p className="hud-label text-neonCyan">jonathan</p>
             <h1 className="mt-3 font-display text-2xl uppercase tracking-[0.35em] text-white md:text-4xl">
-              Jonathan's Neon Cyber Haven
+              Jonathan's Neon Cyber Headquarters
             </h1>
             <p className="mt-3 max-w-md text-sm text-white/75 md:text-base">
               {profile.name} leads internal AI innovation at Kaseya within

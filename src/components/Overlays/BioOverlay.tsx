@@ -55,12 +55,24 @@ export default function BioOverlay({ open, onClose }: BioOverlayProps) {
             <p className="hud-label text-neonYellow">Current Scope</p>
             <p className="mt-3 text-base text-white/75">{profile.summary}</p>
           </div>
-          {profileHighlights.map((item, index) => (
+          {profileHighlights.map((item) => (
             <div
               key={item.title}
-              className={`rounded-3xl border border-white/10 bg-white/5 p-4 ${index === 4 ? 'lg:col-span-3' : ''}`}
+              className={`rounded-3xl border border-white/10 bg-white/5 p-4 ${
+                item.title === 'University' || item.title === 'Executive Education'
+                  ? 'lg:col-span-1'
+                  : ''
+              }`}
             >
-              <p className={`hud-label ${index % 2 === 0 ? 'text-neonCyan' : 'text-neonPink'}`}>
+              <p
+                className={`hud-label ${
+                  item.title === 'University' || item.title === 'Executive Education'
+                    ? 'text-neonYellow'
+                    : item.title.includes('Kaseya')
+                      ? 'text-neonCyan'
+                      : 'text-neonPink'
+                }`}
+              >
                 {item.title}
               </p>
               <p className="mt-3 text-base text-white/75">{item.body}</p>
