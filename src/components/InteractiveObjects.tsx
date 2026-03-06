@@ -304,9 +304,9 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
         textAlign="center"
         anchorX="center"
         anchorY="middle"
-        color="#f8feff"
-        outlineColor="#09131b"
-        outlineWidth={0.008}
+        color="#041018"
+        outlineColor="#dffcff"
+        outlineWidth={0.004}
         material-toneMapped={false}
       >
         PROJECTS
