@@ -17,20 +17,52 @@ export interface ContactItem {
   tone: string;
 }
 
+export interface ProfileHighlight {
+  title: string;
+  body: string;
+}
+
 export const profile = {
   name: 'Jonathan Sotoodeh',
   shortName: 'jonathan',
-  handle: '@jtsotoodeh',
   city: 'Miami',
   bio:
-    'Jonathan Sotoodeh is a Miami-based developer and Sr. Analyst in GTM Strategy & Operations at Kaseya, blending systems thinking with immersive web, creative coding, and modern 3D frontend work.',
+    'Jonathan Sotoodeh leads internal AI innovation at Kaseya within strategic finance. He is also an ex-founder and a Michigan Ross MBA.',
   summary:
-    'His current portfolio direction combines strategic product and operations perspective with interaction-heavy frontend work, motion systems, and real-time 3D experiences on the web.',
+    'At Kaseya, he has led internal AI innovation work across GTM and renewals, built AI systems tied to gross bookings growth and labor savings, and previously worked in strategic finance on churn forecasting, churn mitigation, and executive decision support.',
   focus:
-    'GTM strategy and operations, React, TypeScript, React Three Fiber, Tailwind CSS, GSAP, and GitHub Pages deployment',
+    'Internal AI innovation, strategic finance, GTM initiatives, founder-led product development, and strategy education across business and disruptive innovation',
   currentBuild: "Jonathan's Neon Cyber Haven",
   githubRepos: 1,
 };
+
+export const profileHighlights: ProfileHighlight[] = [
+  {
+    title: 'Kaseya | Internal AI Innovation',
+    body:
+      'Manager, Internal AI Innovation (2025-Present). Built an AI Pipeline Prioritization platform that generated $1.5M of additional gross bookings in the last two weeks of Q4 25, led a multi-agent AI Account Investigation platform tied to $4M in annual cost savings through a 92% reduction in manual labor hours for renewals, earned the Kaseya GenAI Spotlight for Innovation, and presented as a keynote speaker at a company-wide all-hands for 500+ attendees.',
+  },
+  {
+    title: 'Kaseya | Strategic Finance',
+    body:
+      'Strategic Finance (2024-2025). Owned company-wide churn forecasting for $1.6B in SaaS renewals, led analysis for a churn mitigation program that saved $2M in its Q2 launch, proposed accepted event cuts based on financial and regional impact, and delivered product utilization, breakeven, and growth-priority analysis to the C-suite, board, and private equity investors.',
+  },
+  {
+    title: 'Founder | Novastitch',
+    body:
+      'Founder and CFO (2018-2024). Secured a $90K seed round at a $1.2M valuation, led product development from ideation to a functional robotics prototype using machine vision and object recognition, worked with strategic partners including The Gap, Inc. and H&M, improved per-unit gross margins by 29%, reduced R&D cycle time by 33%, and sold select product assets in the wind-down.',
+  },
+  {
+    title: 'Education',
+    body:
+      'MBA, University of Michigan Ross School of Business, 3.94 GPA, High Distinction, Beta Gamma Sigma, and merit scholarship recipient. BS in Business Administration with a finance concentration from the University of Southern California, 3.73 GPA, Magna Cum Laude, Deans List 6 of 7 semesters, USC Ice Hockey player, and recognized as 1 of 30 Graduates of the Last Decade in the USC Marshall Centennial Book.',
+  },
+  {
+    title: 'Executive Education',
+    body:
+      'Completed CEO Masterclasses in Strategy at Cass Business School and Disruptive Strategy with Clayton Christensen at Harvard Business School, applying strategic analysis to AI, ML, cloud technology, and senior stakeholder decision-making.',
+  },
+];
 
 export const socialLinks: SocialLink[] = [
   { label: 'MAIL', href: 'mailto:jonathan.sotoodeh@kaseya.com' },

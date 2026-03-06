@@ -64,9 +64,9 @@ export default function HUD({
               Jonathan's Neon Cyber Haven
             </h1>
             <p className="mt-3 max-w-md text-sm text-white/75 md:text-base">
-              {profile.name} builds immersive web interfaces from {profile.city},
-              blending React, motion, and real-time 3D into cinematic portfolio
-              experiences.
+              {profile.name} leads internal AI innovation at Kaseya within
+              strategic finance and brings an operator, founder, and MBA lens to
+              the work.
             </p>
 
             <div className="mt-4 flex flex-wrap gap-2">

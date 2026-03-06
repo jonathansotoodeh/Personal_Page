@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
-import { profile } from '../../content/siteContent';
+import { profile, profileHighlights } from '../../content/siteContent';
 
 interface BioOverlayProps {
   open: boolean;
@@ -44,32 +44,27 @@ export default function BioOverlay({ open, onClose }: BioOverlayProps) {
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-4 md:col-span-2">
             <p className="hud-label text-neonPink">Focus</p>
-            <p className="mt-3 text-base text-white/75">
-              {profile.focus}
-            </p>
+            <p className="mt-3 text-base text-white/75">{profile.focus}</p>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-            <p className="hud-label text-neonYellow">Current Status</p>
-            <p className="mt-3 text-base text-white/75">
-              {profile.summary}
-            </p>
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-4 md:col-span-2">
+            <p className="hud-label text-neonYellow">Current Scope</p>
+            <p className="mt-3 text-base text-white/75">{profile.summary}</p>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-            <p className="hud-label text-neonCyan">Location</p>
-            <p className="mt-3 text-base text-white/75">
-              {profile.city}, with a public portfolio and GitHub profile under
-              active development.
-            </p>
-          </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-            <p className="hud-label text-neonPink">Public Footprint</p>
-            <p className="mt-3 text-base text-white/75">
-              {profile.githubRepos} public GitHub repo live right now, centered
-              on this portfolio build and ready to expand.
-            </p>
-          </div>
+          {profileHighlights.map((item, index) => (
+            <div
+              key={item.title}
+              className={`rounded-3xl border border-white/10 bg-white/5 p-4 ${
+                index >= 2 ? 'md:col-span-2' : ''
+              }`}
+            >
+              <p className={`hud-label ${index % 2 === 0 ? 'text-neonCyan' : 'text-neonPink'}`}>
+                {item.title}
+              </p>
+              <p className="mt-3 text-base text-white/75">{item.body}</p>
+            </div>
+          ))}
         </div>
       </div>
     </aside>
