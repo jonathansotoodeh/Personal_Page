@@ -5,7 +5,6 @@ import * as THREE from 'three';
 import helvetikerFont from 'three/examples/fonts/helvetiker_bold.typeface.json';
 import cocktailAssetUrl from '../assets/generated/cocktail.glb?url';
 import contactOrbAssetUrl from '../assets/generated/contact-orb.glb?url';
-import laptopAssetUrl from '../assets/generated/laptop.glb?url';
 
 const textFont = helvetikerFont as unknown as string;
 
@@ -291,6 +290,108 @@ function FloatingDecor({ sunsetMode }: { sunsetMode: boolean }) {
   );
 }
 
+function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
+  return (
+    <group rotation={[-0.08, 0.28, 0]}>
+      <mesh position={[0, -0.18, 0.12]}>
+        <boxGeometry args={[1.9, 0.14, 1.24]} />
+        <meshStandardMaterial color="#101722" emissive="#143244" emissiveIntensity={0.18} metalness={0.74} roughness={0.18} />
+      </mesh>
+      <mesh position={[0, 0.18, -0.18]}>
+        <boxGeometry args={[0.22, 0.48, 0.22]} />
+        <meshStandardMaterial color="#151d2b" metalness={0.78} roughness={0.16} />
+      </mesh>
+      <mesh position={[0, 0.86, -0.28]}>
+        <boxGeometry args={[1.32, 1.02, 0.16]} />
+        <meshStandardMaterial color="#121927" emissive="#101f33" emissiveIntensity={0.24} metalness={0.66} roughness={0.15} />
+      </mesh>
+      <mesh position={[0, 0.86, -0.18]}>
+        <boxGeometry args={[1.06, 0.76, 0.03]} />
+        <meshStandardMaterial
+          color={sunsetMode ? '#ffb347' : '#8ef9ff'}
+          emissive={sunsetMode ? '#ffb347' : '#00ffff'}
+          emissiveIntensity={1.15}
+          metalness={0.12}
+          roughness={0.08}
+        />
+      </mesh>
+      <mesh position={[0, 0.06, 0.18]}>
+        <boxGeometry args={[1.18, 0.04, 0.52]} />
+        <meshStandardMaterial color="#0f1724" metalness={0.74} roughness={0.18} />
+      </mesh>
+      {[-0.34, -0.17, 0, 0.17, 0.34].map((x) => (
+        <mesh key={x} position={[x, 0.09, 0.1]}>
+          <boxGeometry args={[0.12, 0.02, 0.12]} />
+          <meshStandardMaterial color="#18243a" emissive="#00ffff" emissiveIntensity={0.12} />
+        </mesh>
+      ))}
+      <mesh position={[0, 0.07, 0.38]}>
+        <boxGeometry args={[0.34, 0.012, 0.18]} />
+        <meshStandardMaterial color="#253246" emissive="#8ef9ff" emissiveIntensity={0.08} />
+      </mesh>
+      <group position={[0, 1.36, -0.52]}>
+        <NeonPlaqueLabel
+          text="PROJECTS"
+          position={[0, 0, 0]}
+          color="#8ef9ff"
+          plaqueSize={[2.32, 0.42, 0.09]}
+          textSize={0.19}
+        />
+      </group>
+    </group>
+  );
+}
+
+function AboutRobot() {
+  return (
+    <group>
+      <mesh position={[0, 1.7, 0]}>
+        <boxGeometry args={[0.62, 0.58, 0.48]} />
+        <meshStandardMaterial color="#151927" emissive="#1d2333" emissiveIntensity={0.24} metalness={0.72} roughness={0.18} />
+      </mesh>
+      <mesh position={[-0.14, 1.75, 0.25]}>
+        <sphereGeometry args={[0.04, 12, 12]} />
+        <meshStandardMaterial color="#8ef9ff" emissive="#00ffff" emissiveIntensity={1.2} />
+      </mesh>
+      <mesh position={[0.14, 1.75, 0.25]}>
+        <sphereGeometry args={[0.04, 12, 12]} />
+        <meshStandardMaterial color="#ff7bd3" emissive="#ff00aa" emissiveIntensity={1.2} />
+      </mesh>
+      <mesh position={[0, 1.02, 0]}>
+        <boxGeometry args={[0.86, 0.94, 0.42]} />
+        <meshStandardMaterial color="#121826" emissive="#2a1230" emissiveIntensity={0.16} metalness={0.74} roughness={0.18} />
+      </mesh>
+      <mesh position={[-0.58, 1.02, 0]} rotation={[0, 0, 0.14]}>
+        <boxGeometry args={[0.16, 0.78, 0.16]} />
+        <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
+      </mesh>
+      <mesh position={[0.58, 1.02, 0]} rotation={[0, 0, -0.14]}>
+        <boxGeometry args={[0.16, 0.78, 0.16]} />
+        <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
+      </mesh>
+      <mesh position={[-0.22, 0.28, 0]}>
+        <boxGeometry args={[0.18, 0.72, 0.18]} />
+        <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
+      </mesh>
+      <mesh position={[0.22, 0.28, 0]}>
+        <boxGeometry args={[0.18, 0.72, 0.18]} />
+        <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
+      </mesh>
+      <mesh position={[0, -0.14, 0]}>
+        <boxGeometry args={[0.74, 0.14, 0.52]} />
+        <meshStandardMaterial color="#101722" emissive="#1e2035" emissiveIntensity={0.2} metalness={0.72} roughness={0.18} />
+      </mesh>
+      <NeonPlaqueLabel
+        text="ABOUT"
+        position={[0, 1.03, 0.24]}
+        color="#ff7bd3"
+        plaqueSize={[0.72, 0.26, 0.08]}
+        textSize={0.11}
+      />
+    </group>
+  );
+}
+
 export default function InteractiveObjects({
   sunsetMode,
   onOpenBio,
@@ -306,22 +407,7 @@ export default function InteractiveObjects({
         onSelect={onOpenProjects}
         position={[-2.55, 1.02, 0.95]}
       >
-        <group>
-          <AssetModel assetUrl={laptopAssetUrl} rotation={[-0.18, 0.32, 0]} scale={0.92} />
-          <mesh position={[0, -0.05, 0.08]} rotation={[-0.18, 0.32, 0]}>
-            <boxGeometry args={[1.72, 0.12, 1.18]} />
-            <meshStandardMaterial color="#111721" emissive="#143244" emissiveIntensity={0.18} metalness={0.7} roughness={0.2} />
-          </mesh>
-          <group rotation={[-0.18, 0.32, 0]} position={[0, 1.08, -0.58]}>
-            <NeonPlaqueLabel
-              text="PROJECTS"
-              position={[0, 0, 0]}
-              color="#8ef9ff"
-              plaqueSize={[2.32, 0.42, 0.09]}
-              textSize={0.19}
-            />
-          </group>
-        </group>
+        <ProjectsTerminal sunsetMode={sunsetMode} />
       </Hotspot>
 
       <Hotspot
@@ -330,37 +416,7 @@ export default function InteractiveObjects({
         onSelect={onOpenBio}
         position={[2.55, 2.2, -0.3]}
       >
-        <group>
-          <mesh position={[0, 0, -0.04]}>
-            <boxGeometry args={[2.18, 0.5, 0.12]} />
-            <meshStandardMaterial
-              color="#120d15"
-              emissive="#ff00aa"
-              emissiveIntensity={0.9}
-              metalness={0.68}
-              roughness={0.2}
-            />
-          </mesh>
-          <mesh position={[-0.96, 0, 0.02]}>
-            <boxGeometry args={[0.08, 0.58, 0.08]} />
-            <meshStandardMaterial color="#0f1018" emissive="#00ffff" emissiveIntensity={0.9} />
-          </mesh>
-          <mesh position={[0.96, 0, 0.02]}>
-            <boxGeometry args={[0.08, 0.58, 0.08]} />
-            <meshStandardMaterial color="#0f1018" emissive="#ff00aa" emissiveIntensity={0.9} />
-          </mesh>
-          <mesh position={[0, 0, -0.09]}>
-            <boxGeometry args={[2.45, 0.78, 0.03]} />
-            <meshStandardMaterial color="#2d0d25" emissive="#ff00aa" emissiveIntensity={0.4} />
-          </mesh>
-          <NeonPlaqueLabel
-            text="ABOUT"
-            position={[0, -0.08, 0]}
-            color="#ff7bd3"
-            plaqueSize={[2.22, 0.44, 0.09]}
-            textSize={0.2}
-          />
-        </group>
+        <AboutRobot />
       </Hotspot>
 
       <Hotspot
@@ -407,8 +463,8 @@ export default function InteractiveObjects({
             radius={1.02}
             y={0}
             color="#d8c7ff"
-            size={0.135}
-            bandRadius={0.11}
+            size={0.145}
+            bandRadius={0.16}
           />
         </group>
       </Hotspot>
@@ -443,6 +499,5 @@ export default function InteractiveObjects({
   );
 }
 
-useGLTF.preload(laptopAssetUrl);
 useGLTF.preload(cocktailAssetUrl);
 useGLTF.preload(contactOrbAssetUrl);
