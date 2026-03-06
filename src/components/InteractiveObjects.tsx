@@ -297,10 +297,6 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
           roughness={0.92}
         />
       </mesh>
-      <mesh position={[0, 0.97, -0.151]} renderOrder={8}>
-        <boxGeometry args={[0.88, 0.25, 0.014]} />
-        <meshBasicMaterial color="#effcff" toneMapped={false} />
-      </mesh>
       <Center position={[0, 0.97, -0.136]}>
         <Text3D
           font={textFont}
