@@ -297,16 +297,20 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
           roughness={0.08}
         />
       </mesh>
+      <mesh position={[0, 0.97, -0.151]}>
+        <boxGeometry args={[0.84, 0.22, 0.012]} />
+        <meshBasicMaterial color="#f4feff" transparent opacity={0.26} toneMapped={false} />
+      </mesh>
       <Text
         position={[0, 0.97, -0.148]}
-        fontSize={0.18}
-        maxWidth={0.82}
+        fontSize={0.2}
+        maxWidth={0.72}
         textAlign="center"
         anchorX="center"
         anchorY="middle"
-        color="#041018"
-        outlineColor="#dffcff"
-        outlineWidth={0.004}
+        color="#01070b"
+        outlineColor="#f7feff"
+        outlineWidth={0.01}
         material-toneMapped={false}
       >
         PROJECTS
@@ -366,7 +370,7 @@ function AboutRobot() {
       </mesh>
       <mesh position={[0, 1.95, 0.02]}>
         <boxGeometry args={[0.74, 0.68, 0.54]} />
-        <meshStandardMaterial color="#5f7ea6" emissive="#24374d" emissiveIntensity={0.2} metalness={0.46} roughness={0.14} />
+        <meshStandardMaterial color="#5f7ea6" emissive="#24374d" emissiveIntensity={0.12} metalness={0.08} roughness={0.72} />
       </mesh>
       <mesh position={[0, 2.42, 0.08]}>
         <boxGeometry args={[0.3, 0.08, 0.08]} />
