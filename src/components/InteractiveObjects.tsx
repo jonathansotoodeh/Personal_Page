@@ -315,6 +315,48 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
           roughness={0.08}
         />
       </mesh>
+      <Center position={[0, 0.99, -0.155]}>
+        <Text3D
+          font={textFont}
+          size={0.16}
+          height={0.02}
+          bevelEnabled
+          bevelSize={0.004}
+          bevelThickness={0.004}
+          curveSegments={8}
+        >
+          PROJECTS
+          <meshStandardMaterial
+            color="#081018"
+            emissive="#f7ffff"
+            emissiveIntensity={0.42}
+            metalness={0.1}
+            roughness={0.2}
+          />
+        </Text3D>
+      </Center>
+      {[-0.23, 0, 0.23].map((x) => (
+        <mesh key={`screen-line-${x}`} position={[x, 0.74, -0.153]}>
+          <boxGeometry args={[0.18, 0.03, 0.012]} />
+          <meshStandardMaterial
+            color="#081018"
+            emissive="#b6ffff"
+            emissiveIntensity={0.4}
+            metalness={0.08}
+            roughness={0.22}
+          />
+        </mesh>
+      ))}
+      <mesh position={[0, 0.55, -0.153]}>
+        <boxGeometry args={[0.62, 0.04, 0.012]} />
+        <meshStandardMaterial
+          color="#081018"
+          emissive="#d7ffff"
+          emissiveIntensity={0.35}
+          metalness={0.08}
+          roughness={0.22}
+        />
+      </mesh>
       <mesh position={[0, 0.06, 0.18]}>
         <boxGeometry args={[1.18, 0.04, 0.52]} />
         <meshStandardMaterial color="#0f1724" metalness={0.74} roughness={0.18} />
@@ -329,64 +371,75 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
         <boxGeometry args={[0.34, 0.012, 0.18]} />
         <meshStandardMaterial color="#253246" emissive="#8ef9ff" emissiveIntensity={0.08} />
       </mesh>
-      <group position={[0, 1.36, -0.52]}>
-        <NeonPlaqueLabel
-          text="PROJECTS"
-          position={[0, 0, 0]}
-          color="#8ef9ff"
-          plaqueSize={[2.32, 0.42, 0.09]}
-          textSize={0.19}
-        />
-      </group>
     </group>
   );
 }
 
 function AboutRobot() {
   return (
-    <group>
-      <mesh position={[0, 1.7, 0]}>
-        <boxGeometry args={[0.62, 0.58, 0.48]} />
+    <group rotation={[0, -0.18, 0]}>
+      <mesh position={[0, 0.1, 0]}>
+        <cylinderGeometry args={[0.62, 0.74, 0.16, 8]} />
+        <meshStandardMaterial color="#101722" emissive="#241334" emissiveIntensity={0.24} metalness={0.72} roughness={0.18} />
+      </mesh>
+      <mesh position={[0, 0.96, 0]}>
+        <boxGeometry args={[1.08, 1.24, 0.56]} />
+        <meshStandardMaterial color="#121826" emissive="#2a1230" emissiveIntensity={0.2} metalness={0.76} roughness={0.16} />
+      </mesh>
+      <mesh position={[0, 1.95, 0.02]}>
+        <boxGeometry args={[0.74, 0.68, 0.54]} />
         <meshStandardMaterial color="#151927" emissive="#1d2333" emissiveIntensity={0.24} metalness={0.72} roughness={0.18} />
       </mesh>
-      <mesh position={[-0.14, 1.75, 0.25]}>
-        <sphereGeometry args={[0.04, 12, 12]} />
+      <mesh position={[0, 2.42, 0.08]}>
+        <boxGeometry args={[0.3, 0.08, 0.08]} />
+        <meshStandardMaterial color="#21283a" emissive="#00ffff" emissiveIntensity={0.22} />
+      </mesh>
+      <mesh position={[0, 2.64, 0]}>
+        <cylinderGeometry args={[0.025, 0.025, 0.34, 10]} />
+        <meshStandardMaterial color="#2b3145" metalness={0.76} roughness={0.16} />
+      </mesh>
+      <mesh position={[0, 2.83, 0]}>
+        <sphereGeometry args={[0.05, 12, 12]} />
         <meshStandardMaterial color="#8ef9ff" emissive="#00ffff" emissiveIntensity={1.2} />
       </mesh>
-      <mesh position={[0.14, 1.75, 0.25]}>
-        <sphereGeometry args={[0.04, 12, 12]} />
+      <mesh position={[-0.17, 1.98, 0.29]}>
+        <sphereGeometry args={[0.06, 14, 14]} />
+        <meshStandardMaterial color="#8ef9ff" emissive="#00ffff" emissiveIntensity={1.2} />
+      </mesh>
+      <mesh position={[0.17, 1.98, 0.29]}>
+        <sphereGeometry args={[0.06, 14, 14]} />
         <meshStandardMaterial color="#ff7bd3" emissive="#ff00aa" emissiveIntensity={1.2} />
       </mesh>
-      <mesh position={[0, 1.02, 0]}>
-        <boxGeometry args={[0.86, 0.94, 0.42]} />
-        <meshStandardMaterial color="#121826" emissive="#2a1230" emissiveIntensity={0.16} metalness={0.74} roughness={0.18} />
+      <mesh position={[0, 1.7, 0.3]}>
+        <boxGeometry args={[0.24, 0.06, 0.06]} />
+        <meshStandardMaterial color="#242b3b" emissive="#fef08a" emissiveIntensity={0.65} metalness={0.24} roughness={0.2} />
       </mesh>
-      <mesh position={[-0.58, 1.02, 0]} rotation={[0, 0, 0.14]}>
-        <boxGeometry args={[0.16, 0.78, 0.16]} />
+      <mesh position={[-0.78, 1.06, 0]} rotation={[0, 0, 0.18]}>
+        <boxGeometry args={[0.22, 0.9, 0.22]} />
         <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
       </mesh>
-      <mesh position={[0.58, 1.02, 0]} rotation={[0, 0, -0.14]}>
-        <boxGeometry args={[0.16, 0.78, 0.16]} />
+      <mesh position={[0.78, 1.06, 0]} rotation={[0, 0, -0.18]}>
+        <boxGeometry args={[0.22, 0.9, 0.22]} />
         <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
       </mesh>
-      <mesh position={[-0.22, 0.28, 0]}>
-        <boxGeometry args={[0.18, 0.72, 0.18]} />
+      <mesh position={[-0.28, 0.18, 0]} rotation={[0, 0, 0.06]}>
+        <boxGeometry args={[0.22, 0.9, 0.22]} />
         <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
       </mesh>
-      <mesh position={[0.22, 0.28, 0]}>
-        <boxGeometry args={[0.18, 0.72, 0.18]} />
+      <mesh position={[0.28, 0.18, 0]} rotation={[0, 0, -0.06]}>
+        <boxGeometry args={[0.22, 0.9, 0.22]} />
         <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
       </mesh>
-      <mesh position={[0, -0.14, 0]}>
-        <boxGeometry args={[0.74, 0.14, 0.52]} />
-        <meshStandardMaterial color="#101722" emissive="#1e2035" emissiveIntensity={0.2} metalness={0.72} roughness={0.18} />
+      <mesh position={[0, 1.02, 0.31]}>
+        <boxGeometry args={[0.6, 0.1, 0.08]} />
+        <meshStandardMaterial color="#242b3b" emissive="#00ffff" emissiveIntensity={0.34} metalness={0.24} roughness={0.2} />
       </mesh>
       <NeonPlaqueLabel
         text="ABOUT"
-        position={[0, 1.03, 0.24]}
+        position={[0, 0.98, 0.34]}
         color="#ff7bd3"
-        plaqueSize={[0.72, 0.26, 0.08]}
-        textSize={0.11}
+        plaqueSize={[0.8, 0.28, 0.08]}
+        textSize={0.12}
       />
     </group>
   );
@@ -454,18 +507,30 @@ export default function InteractiveObjects({
             <cylinderGeometry args={[0.1, 0.14, 0.9, 16]} />
             <meshStandardMaterial color="#141622" emissive="#2f215a" emissiveIntensity={0.22} metalness={0.66} roughness={0.22} />
           </mesh>
-          <mesh position={[0, -1.05, 0]}>
-            <cylinderGeometry args={[0.42, 0.52, 0.12, 28]} />
+          <mesh position={[0, -1.08, 0]}>
+            <boxGeometry args={[1.44, 0.2, 1.44]} />
             <meshStandardMaterial color="#131621" emissive="#34245d" emissiveIntensity={0.2} metalness={0.7} roughness={0.18} />
           </mesh>
-          <CircularEmbossedWord
-            text="CONTACT"
-            radius={1.02}
-            y={0}
-            color="#d8c7ff"
-            size={0.145}
-            bandRadius={0.16}
-          />
+          <Center position={[0, -1.08, 0.76]}>
+            <Text3D
+              font={textFont}
+              size={0.16}
+              height={0.05}
+              bevelEnabled
+              bevelSize={0.006}
+              bevelThickness={0.006}
+              curveSegments={8}
+            >
+              CONTACT
+              <meshStandardMaterial
+                color="#f8f3ff"
+                emissive="#d8c7ff"
+                emissiveIntensity={0.92}
+                metalness={0.42}
+                roughness={0.16}
+              />
+            </Text3D>
+          </Center>
         </group>
       </Hotspot>
 
