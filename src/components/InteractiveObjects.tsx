@@ -1,4 +1,4 @@
-import { Center, Text3D, useCursor, useGLTF } from '@react-three/drei';
+import { Center, Text, Text3D, useCursor, useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { type ReactNode, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
@@ -315,44 +315,37 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
           roughness={0.08}
         />
       </mesh>
-      <Center position={[0, 0.99, -0.155]}>
-        <Text3D
-          font={textFont}
-          size={0.16}
-          height={0.02}
-          bevelEnabled
-          bevelSize={0.004}
-          bevelThickness={0.004}
-          curveSegments={8}
-        >
-          PROJECTS
-          <meshStandardMaterial
-            color="#081018"
-            emissive="#f7ffff"
-            emissiveIntensity={0.42}
-            metalness={0.1}
-            roughness={0.2}
-          />
-        </Text3D>
-      </Center>
-      {[-0.23, 0, 0.23].map((x) => (
-        <mesh key={`screen-line-${x}`} position={[x, 0.74, -0.153]}>
-          <boxGeometry args={[0.18, 0.03, 0.012]} />
+      <Text
+        position={[0, 0.97, -0.148]}
+        fontSize={0.18}
+        maxWidth={0.82}
+        textAlign="center"
+        anchorX="center"
+        anchorY="middle"
+        color="#061018"
+        outlineColor={sunsetMode ? '#fff2cf' : '#f1ffff'}
+        outlineWidth={0.014}
+      >
+        PROJECTS
+      </Text>
+      {[-0.26, 0, 0.26].map((x) => (
+        <mesh key={`screen-line-${x}`} position={[x, 0.71, -0.153]}>
+          <boxGeometry args={[0.14, 0.028, 0.012]} />
           <meshStandardMaterial
             color="#081018"
             emissive="#b6ffff"
-            emissiveIntensity={0.4}
+            emissiveIntensity={0.3}
             metalness={0.08}
             roughness={0.22}
           />
         </mesh>
       ))}
-      <mesh position={[0, 0.55, -0.153]}>
-        <boxGeometry args={[0.62, 0.04, 0.012]} />
+      <mesh position={[0, 0.52, -0.153]}>
+        <boxGeometry args={[0.5, 0.032, 0.012]} />
         <meshStandardMaterial
           color="#081018"
           emissive="#d7ffff"
-          emissiveIntensity={0.35}
+          emissiveIntensity={0.24}
           metalness={0.08}
           roughness={0.22}
         />
@@ -380,15 +373,15 @@ function AboutRobot() {
     <group rotation={[0, -0.18, 0]}>
       <mesh position={[0, 0.1, 0]}>
         <cylinderGeometry args={[0.62, 0.74, 0.16, 8]} />
-        <meshStandardMaterial color="#101722" emissive="#241334" emissiveIntensity={0.24} metalness={0.72} roughness={0.18} />
+        <meshStandardMaterial color="#23324a" emissive="#4d1f60" emissiveIntensity={0.3} metalness={0.68} roughness={0.16} />
       </mesh>
       <mesh position={[0, 0.96, 0]}>
         <boxGeometry args={[1.08, 1.24, 0.56]} />
-        <meshStandardMaterial color="#121826" emissive="#2a1230" emissiveIntensity={0.2} metalness={0.76} roughness={0.16} />
+        <meshStandardMaterial color="#2a3b56" emissive="#4f1f6c" emissiveIntensity={0.34} metalness={0.72} roughness={0.14} />
       </mesh>
       <mesh position={[0, 1.95, 0.02]}>
         <boxGeometry args={[0.74, 0.68, 0.54]} />
-        <meshStandardMaterial color="#151927" emissive="#1d2333" emissiveIntensity={0.24} metalness={0.72} roughness={0.18} />
+        <meshStandardMaterial color="#324463" emissive="#2d3954" emissiveIntensity={0.36} metalness={0.68} roughness={0.14} />
       </mesh>
       <mesh position={[0, 2.42, 0.08]}>
         <boxGeometry args={[0.3, 0.08, 0.08]} />
@@ -396,7 +389,7 @@ function AboutRobot() {
       </mesh>
       <mesh position={[0, 2.64, 0]}>
         <cylinderGeometry args={[0.025, 0.025, 0.34, 10]} />
-        <meshStandardMaterial color="#2b3145" metalness={0.76} roughness={0.16} />
+        <meshStandardMaterial color="#95a9c8" emissive="#8ef9ff" emissiveIntensity={0.14} metalness={0.5} roughness={0.14} />
       </mesh>
       <mesh position={[0, 2.83, 0]}>
         <sphereGeometry args={[0.05, 12, 12]} />
@@ -412,27 +405,27 @@ function AboutRobot() {
       </mesh>
       <mesh position={[0, 1.7, 0.3]}>
         <boxGeometry args={[0.24, 0.06, 0.06]} />
-        <meshStandardMaterial color="#242b3b" emissive="#fef08a" emissiveIntensity={0.65} metalness={0.24} roughness={0.2} />
+        <meshStandardMaterial color="#f3f0b0" emissive="#fef08a" emissiveIntensity={0.85} metalness={0.18} roughness={0.16} />
       </mesh>
       <mesh position={[-0.78, 1.06, 0]} rotation={[0, 0, 0.18]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
+        <meshStandardMaterial color="#51688f" emissive="#1f2e48" emissiveIntensity={0.2} metalness={0.62} roughness={0.18} />
       </mesh>
       <mesh position={[0.78, 1.06, 0]} rotation={[0, 0, -0.18]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
+        <meshStandardMaterial color="#51688f" emissive="#1f2e48" emissiveIntensity={0.2} metalness={0.62} roughness={0.18} />
       </mesh>
       <mesh position={[-0.28, 0.18, 0]} rotation={[0, 0, 0.06]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
+        <meshStandardMaterial color="#51688f" emissive="#1f2e48" emissiveIntensity={0.2} metalness={0.62} roughness={0.18} />
       </mesh>
       <mesh position={[0.28, 0.18, 0]} rotation={[0, 0, -0.06]}>
         <boxGeometry args={[0.22, 0.9, 0.22]} />
-        <meshStandardMaterial color="#141b29" metalness={0.68} roughness={0.2} />
+        <meshStandardMaterial color="#51688f" emissive="#1f2e48" emissiveIntensity={0.2} metalness={0.62} roughness={0.18} />
       </mesh>
       <mesh position={[0, 1.02, 0.31]}>
         <boxGeometry args={[0.6, 0.1, 0.08]} />
-        <meshStandardMaterial color="#242b3b" emissive="#00ffff" emissiveIntensity={0.34} metalness={0.24} roughness={0.2} />
+        <meshStandardMaterial color="#d7e8ff" emissive="#00ffff" emissiveIntensity={0.48} metalness={0.16} roughness={0.16} />
       </mesh>
       <NeonPlaqueLabel
         text="ABOUT"

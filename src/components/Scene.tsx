@@ -96,7 +96,7 @@ function SceneContent({
   readyFlag,
 }: SceneContentProps) {
   const roomGroup = useRef<THREE.Group>(null);
-  const chromaticOffset = useMemo(() => new THREE.Vector2(0.0008, 0.0012), []);
+  const chromaticOffset = useMemo(() => new THREE.Vector2(0.00018, 0.00024), []);
 
   useEffect(() => {
     if (readyFlag.current) {
@@ -134,7 +134,7 @@ function SceneContent({
 
   return (
     <>
-      <ambientLight intensity={0.55} color={sunsetMode ? '#ffd0b3' : '#ffffff'} />
+      <ambientLight intensity={0.72} color={sunsetMode ? '#ffd0b3' : '#ffffff'} />
       <hemisphereLight
         args={[sunsetMode ? '#ffcc99' : '#66e7ff', '#12081d', sunsetMode ? 1.1 : 0.7]}
       />
@@ -226,20 +226,20 @@ function SceneContent({
         autoRotateSpeed={0.3}
       />
 
-      <EffectComposer enableNormalPass={false} multisampling={0}>
+      <EffectComposer enableNormalPass={false} multisampling={isMobile ? 0 : 4}>
         <Bloom
           mipmapBlur
-          intensity={sunsetMode ? 1.35 : 1.65}
-          luminanceThreshold={0.18}
-          radius={0.82}
+          intensity={sunsetMode ? 0.95 : 1.08}
+          luminanceThreshold={0.22}
+          radius={0.48}
         />
         <ChromaticAberration
           offset={chromaticOffset}
           radialModulation={false}
           modulationOffset={0}
         />
-        <Noise premultiply opacity={0.028} />
-        <Vignette eskil={false} offset={0.2} darkness={0.85} />
+        <Noise premultiply opacity={0.014} />
+        <Vignette eskil={false} offset={0.16} darkness={0.72} />
       </EffectComposer>
     </>
   );
@@ -252,7 +252,7 @@ export default function Scene(props: SceneProps) {
     <div className="absolute inset-0">
       <Canvas
         camera={{ position: [0, 2.95, 9.7], fov: props.isMobile ? 60 : 50 }}
-        dpr={[1, props.isMobile ? 1.5 : 2]}
+        dpr={[1.2, props.isMobile ? 1.6 : 2.2]}
         gl={{
           antialias: !props.isMobile,
           alpha: false,
