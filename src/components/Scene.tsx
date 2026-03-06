@@ -218,8 +218,8 @@ function SceneContent({
         dampingFactor={0.06}
         enablePan={false}
         enableZoom={!isMobile}
-        minDistance={isMobile ? 7.5 : 6}
-        maxDistance={isMobile ? 9.5 : 10}
+        minDistance={isMobile ? 8.5 : 7.2}
+        maxDistance={isMobile ? 11.5 : 12.5}
         minPolarAngle={0.9}
         maxPolarAngle={1.55}
         autoRotate={!isMobile && autoRotateIdle}
@@ -251,7 +251,7 @@ export default function Scene(props: SceneProps) {
   return (
     <div className="absolute inset-0">
       <Canvas
-        camera={{ position: [0, 2.7, 8.3], fov: props.isMobile ? 56 : 47 }}
+        camera={{ position: [0, 2.95, 9.7], fov: props.isMobile ? 60 : 50 }}
         dpr={[1, props.isMobile ? 1.5 : 2]}
         gl={{
           antialias: !props.isMobile,
