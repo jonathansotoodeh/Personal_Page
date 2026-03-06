@@ -27,8 +27,11 @@ export default function BioOverlay({ open, onClose }: BioOverlayProps) {
   }
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 flex w-full max-w-xl items-center p-4 md:p-8">
-      <div ref={panelRef} className="panel-shell w-full p-6 md:p-8">
+    <aside className="fixed inset-y-0 left-0 z-40 flex w-full max-w-4xl items-center p-4 md:p-8">
+      <div
+        ref={panelRef}
+        className="panel-shell max-h-[calc(100vh-2rem)] w-full overflow-y-auto p-6 md:p-8"
+      >
         <div className="flex items-start justify-between gap-6">
           <div>
             <p className="hud-label text-neonCyan">Identity</p>
@@ -43,21 +46,19 @@ export default function BioOverlay({ open, onClose }: BioOverlayProps) {
           {profile.bio}
         </p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-4 md:col-span-2">
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-4 lg:col-span-3">
             <p className="hud-label text-neonPink">Focus</p>
             <p className="mt-3 text-base text-white/75">{profile.focus}</p>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-4 md:col-span-2">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-4 lg:col-span-3">
             <p className="hud-label text-neonYellow">Current Scope</p>
             <p className="mt-3 text-base text-white/75">{profile.summary}</p>
           </div>
           {profileHighlights.map((item, index) => (
             <div
               key={item.title}
-              className={`rounded-3xl border border-white/10 bg-white/5 p-4 ${
-                index >= 2 ? 'md:col-span-2' : ''
-              }`}
+              className={`rounded-3xl border border-white/10 bg-white/5 p-4 ${index === 4 ? 'lg:col-span-3' : ''}`}
             >
               <p className={`hud-label ${index % 2 === 0 ? 'text-neonCyan' : 'text-neonPink'}`}>
                 {item.title}

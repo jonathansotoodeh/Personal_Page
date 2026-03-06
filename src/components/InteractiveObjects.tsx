@@ -1,4 +1,4 @@
-import { Center, Html, Text3D, useCursor, useGLTF } from '@react-three/drei';
+import { Center, Text3D, useCursor, useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { type ReactNode, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
@@ -20,7 +20,6 @@ interface InteractiveObjectsProps {
 interface HotspotProps {
   color: string;
   glowColor?: string;
-  hint: string;
   onSelect: () => void;
   position: [number, number, number];
   children: ReactNode;
@@ -44,7 +43,6 @@ function AssetModel({
 function Hotspot({
   color,
   glowColor,
-  hint,
   onSelect,
   position,
   children,
@@ -104,13 +102,118 @@ function Hotspot({
           side={THREE.DoubleSide}
         />
       </mesh>
-      {hovered && (
-        <Html position={[0, 1.12, 0]} distanceFactor={7}>
-          <div className="pointer-events-none rounded-full border border-white/20 bg-black/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.35em] text-white shadow-neon">
-            {hint}
-          </div>
-        </Html>
-      )}
+    </group>
+  );
+}
+
+function EmbossedFaceLabel({
+  text,
+  position,
+  color,
+}: {
+  text: string;
+  position: [number, number, number];
+  color: string;
+}) {
+  return (
+    <>
+      <Center position={[position[0], position[1], position[2] + 0.035]}>
+        <Text3D
+          font={textFont}
+          size={0.15}
+          height={0.035}
+          bevelEnabled
+          bevelSize={0.006}
+          bevelThickness={0.006}
+          curveSegments={8}
+        >
+          {text}
+          <meshStandardMaterial
+            color={color}
+            emissive={color}
+            emissiveIntensity={0.45}
+            metalness={0.62}
+            roughness={0.2}
+          />
+        </Text3D>
+      </Center>
+      <Center position={[position[0], position[1], position[2] - 0.035]} rotation={[0, Math.PI, 0]}>
+        <Text3D
+          font={textFont}
+          size={0.15}
+          height={0.035}
+          bevelEnabled
+          bevelSize={0.006}
+          bevelThickness={0.006}
+          curveSegments={8}
+        >
+          {text}
+          <meshStandardMaterial
+            color={color}
+            emissive={color}
+            emissiveIntensity={0.45}
+            metalness={0.62}
+            roughness={0.2}
+          />
+        </Text3D>
+      </Center>
+    </>
+  );
+}
+
+function CircularEmbossedWord({
+  text,
+  radius,
+  y = 0,
+  color,
+  clockwise = true,
+}: {
+  text: string;
+  radius: number;
+  y?: number;
+  color: string;
+  clockwise?: boolean;
+}) {
+  const chars = text.split('');
+  const spread = Math.PI * 0.82;
+  const start = -spread / 2;
+
+  return (
+    <group position={[0, y, 0]}>
+      {chars.map((char, index) => {
+        const t = chars.length === 1 ? 0.5 : index / (chars.length - 1);
+        const angle = start + t * spread;
+        const x = Math.sin(angle) * radius;
+        const z = Math.cos(angle) * radius;
+        const rotationY = (clockwise ? 1 : -1) * angle;
+
+        return (
+          <Center
+            key={`${text}-${index}-${char}`}
+            position={[x, 0, z]}
+            rotation={[0, rotationY, 0]}
+          >
+            <Text3D
+              font={textFont}
+              size={0.1}
+              height={0.028}
+              bevelEnabled
+              bevelSize={0.004}
+              bevelThickness={0.004}
+              curveSegments={6}
+            >
+              {char}
+              <meshStandardMaterial
+                color={color}
+                emissive={color}
+                emissiveIntensity={0.42}
+                metalness={0.55}
+                roughness={0.24}
+              />
+            </Text3D>
+          </Center>
+        );
+      })}
     </group>
   );
 }
@@ -171,17 +274,20 @@ export default function InteractiveObjects({
       <Hotspot
         color="#00ffff"
         glowColor="#9afcff"
-        hint="Open projects"
         onSelect={onOpenProjects}
         position={[-2.55, 1.02, 0.95]}
       >
-        <AssetModel assetUrl={laptopAssetUrl} rotation={[-0.18, 0.32, 0]} scale={0.92} />
+        <group>
+          <AssetModel assetUrl={laptopAssetUrl} rotation={[-0.18, 0.32, 0]} scale={0.92} />
+          <group rotation={[-0.18, 0.32, 0]} position={[0, 1.02, -0.55]}>
+            <EmbossedFaceLabel text="PROJECTS" position={[0, 0, 0]} color="#8ef9ff" />
+          </group>
+        </group>
       </Hotspot>
 
       <Hotspot
         color="#ff00aa"
         glowColor="#ff7bd3"
-        hint="Read bio"
         onSelect={onOpenBio}
         position={[2.55, 2.2, -0.3]}
       >
@@ -208,47 +314,37 @@ export default function InteractiveObjects({
             <boxGeometry args={[2.45, 0.78, 0.03]} />
             <meshStandardMaterial color="#2d0d25" emissive="#ff00aa" emissiveIntensity={0.4} />
           </mesh>
-          <Center position={[0, -0.08, 0.07]}>
-            <Text3D
-              font={textFont}
-              size={0.22}
-              height={0.05}
-              bevelEnabled
-              bevelSize={0.01}
-              bevelThickness={0.01}
-              curveSegments={8}
-            >
-              ABOUT
-              <meshStandardMaterial
-                color="#ff7bd3"
-                emissive="#ff00aa"
-                emissiveIntensity={0.9}
-                metalness={0.5}
-                roughness={0.18}
-              />
-            </Text3D>
-          </Center>
+          <EmbossedFaceLabel text="ABOUT" position={[0, -0.08, 0]} color="#ff7bd3" />
         </group>
       </Hotspot>
 
       <Hotspot
         color={sunsetMode ? '#ffb347' : '#ffff00'}
         glowColor="#fff5a8"
-        hint="Toggle Miami mode"
         onSelect={onToggleMiami}
         position={[2.25, 0.88, 1.35]}
       >
-        <AssetModel assetUrl={cocktailAssetUrl} scale={0.88} />
+        <group>
+          <AssetModel assetUrl={cocktailAssetUrl} scale={0.88} />
+          <CircularEmbossedWord
+            text="MIAMI"
+            radius={0.47}
+            y={0.62}
+            color={sunsetMode ? '#ffd089' : '#ffff8f'}
+          />
+        </group>
       </Hotspot>
 
       <Hotspot
         color="#8b5cf6"
         glowColor="#bca5ff"
-        hint="Open contact links"
         onSelect={onOpenContact}
         position={[0.15, 2.55, 1.75]}
       >
-        <AssetModel assetUrl={contactOrbAssetUrl} scale={0.95} />
+        <group>
+          <AssetModel assetUrl={contactOrbAssetUrl} scale={0.95} />
+          <CircularEmbossedWord text="CONTACT" radius={0.9} y={0} color="#c7b4ff" />
+        </group>
       </Hotspot>
 
       <group position={[4.35, 1.8, -1.5]}>
