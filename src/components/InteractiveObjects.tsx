@@ -277,15 +277,15 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
     <group rotation={[-0.08, 0.28, 0]}>
       <mesh position={[0, -0.18, 0.12]}>
         <boxGeometry args={[1.9, 0.14, 1.24]} />
-        <meshStandardMaterial color="#101722" emissive="#143244" emissiveIntensity={0.18} metalness={0.74} roughness={0.18} />
+        <meshStandardMaterial color="#243246" emissive="#1e4259" emissiveIntensity={0.16} metalness={0.68} roughness={0.2} />
       </mesh>
       <mesh position={[0, 0.18, -0.18]}>
         <boxGeometry args={[0.22, 0.48, 0.22]} />
-        <meshStandardMaterial color="#151d2b" metalness={0.78} roughness={0.16} />
+        <meshStandardMaterial color="#2a3950" metalness={0.7} roughness={0.18} />
       </mesh>
       <mesh position={[0, 0.86, -0.28]}>
         <boxGeometry args={[1.32, 1.02, 0.16]} />
-        <meshStandardMaterial color="#121927" emissive="#101f33" emissiveIntensity={0.24} metalness={0.66} roughness={0.15} />
+        <meshStandardMaterial color="#2c3c54" emissive="#17314a" emissiveIntensity={0.18} metalness={0.6} roughness={0.18} />
       </mesh>
       <mesh position={[0, 0.86, -0.18]}>
         <boxGeometry args={[1.06, 0.76, 0.03]} />
@@ -303,15 +303,16 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
       </mesh>
       <Text
         position={[0, 0.97, -0.148]}
-        fontSize={0.2}
+        fontSize={0.225}
         maxWidth={0.72}
         textAlign="center"
         anchorX="center"
         anchorY="middle"
-        color="#01070b"
-        outlineColor="#f7feff"
-        outlineWidth={0.01}
+        color="#000000"
+        outlineColor="#000000"
+        outlineWidth={0.017}
         material-toneMapped={false}
+        fontWeight={900}
       >
         PROJECTS
       </Text>
@@ -339,7 +340,7 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
       </mesh>
       <mesh position={[0, 0.06, 0.18]}>
         <boxGeometry args={[1.18, 0.04, 0.52]} />
-        <meshStandardMaterial color="#0f1724" metalness={0.74} roughness={0.18} />
+        <meshStandardMaterial color="#263448" metalness={0.68} roughness={0.2} />
       </mesh>
       {[-0.34, -0.17, 0, 0.17, 0.34].map((x) => (
         <mesh key={x} position={[x, 0.09, 0.1]}>
@@ -349,7 +350,7 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
       ))}
       <mesh position={[0, 0.07, 0.38]}>
         <boxGeometry args={[0.34, 0.012, 0.18]} />
-        <meshStandardMaterial color="#253246" emissive="#8ef9ff" emissiveIntensity={0.08} />
+        <meshStandardMaterial color="#3b4d66" emissive="#8ef9ff" emissiveIntensity={0.06} />
       </mesh>
     </group>
   );
@@ -358,8 +359,8 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
 function AboutRobot() {
   return (
     <group rotation={[0, -0.18, 0]}>
-      <pointLight position={[0.2, 2.1, 1.8]} intensity={18} distance={5.5} color="#dff7ff" />
-      <pointLight position={[-0.9, 1.8, 0.9]} intensity={9} distance={4} color="#ffd3f1" />
+      <pointLight position={[0.2, 3.4, 1.1]} intensity={15} distance={5.1} color="#dff7ff" />
+      <pointLight position={[-0.9, 2.7, 0.5]} intensity={7} distance={3.8} color="#ffd3f1" />
       <mesh position={[0, 0.1, 0]}>
         <cylinderGeometry args={[0.62, 0.74, 0.16, 8]} />
         <meshStandardMaterial color="#506989" emissive="#6b2e83" emissiveIntensity={0.38} metalness={0.56} roughness={0.14} />
