@@ -290,25 +290,25 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
       <mesh position={[0, 0.86, -0.18]}>
         <boxGeometry args={[1.06, 0.76, 0.03]} />
         <meshStandardMaterial
-          color={sunsetMode ? '#ffb347' : '#8ef9ff'}
-          emissive={sunsetMode ? '#ffb347' : '#00ffff'}
-          emissiveIntensity={1.15}
-          metalness={0.12}
-          roughness={0.08}
+          color={sunsetMode ? '#ffe7bf' : '#dffbff'}
+          emissive={sunsetMode ? '#ffcf7a' : '#8ef9ff'}
+          emissiveIntensity={0.12}
+          metalness={0.02}
+          roughness={0.92}
         />
       </mesh>
-      <mesh position={[0, 0.97, -0.151]}>
-        <boxGeometry args={[0.84, 0.22, 0.012]} />
-        <meshBasicMaterial color="#f4feff" transparent opacity={0.26} toneMapped={false} />
+      <mesh position={[0, 0.97, -0.151]} renderOrder={8}>
+        <boxGeometry args={[0.88, 0.25, 0.014]} />
+        <meshBasicMaterial color="#effcff" toneMapped={false} />
       </mesh>
-      <Center position={[0, 0.97, -0.143]}>
+      <Center position={[0, 0.97, -0.136]}>
         <Text3D
           font={textFont}
-          size={0.108}
-          height={0.012}
+          size={0.125}
+          height={0.022}
           bevelEnabled
-          bevelSize={0.003}
-          bevelThickness={0.003}
+          bevelSize={0.002}
+          bevelThickness={0.002}
           curveSegments={10}
         >
           PROJECTS
@@ -318,24 +318,12 @@ function ProjectsTerminal({ sunsetMode }: { sunsetMode: boolean }) {
       {[-0.26, 0, 0.26].map((x) => (
         <mesh key={`screen-line-${x}`} position={[x, 0.71, -0.153]}>
           <boxGeometry args={[0.14, 0.028, 0.012]} />
-          <meshStandardMaterial
-            color="#081018"
-            emissive="#b6ffff"
-            emissiveIntensity={0.3}
-            metalness={0.08}
-            roughness={0.22}
-          />
+          <meshStandardMaterial color="#3d556d" metalness={0.06} roughness={0.64} />
         </mesh>
       ))}
       <mesh position={[0, 0.52, -0.153]}>
         <boxGeometry args={[0.5, 0.032, 0.012]} />
-        <meshStandardMaterial
-          color="#081018"
-          emissive="#d7ffff"
-          emissiveIntensity={0.24}
-          metalness={0.08}
-          roughness={0.22}
-        />
+        <meshStandardMaterial color="#516a82" metalness={0.06} roughness={0.58} />
       </mesh>
       <mesh position={[0, 0.06, 0.18]}>
         <boxGeometry args={[1.18, 0.04, 0.52]} />
